@@ -1,6 +1,7 @@
 package com.devteam.digital.core.util;
 
 import com.devteam.digital.core.util.exception.BadRequestException;
+import com.devteam.digital.core.util.exception.IORuntimeException;
 import org.apache.poi.util.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -287,4 +288,7 @@ public class FileUtil {
         return getMd5(getByte(file));
     }
 
+    public static boolean del(String fullFileOrDirPath) throws IORuntimeException {
+        return false;
+    }
 }

@@ -459,4 +459,8 @@ public class StringUtil  {
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("").replaceAll("Đ", "D").replace("đ", "d").toLowerCase();
     }
+
+    public static String capitalize(String str) {
+        return null;
+    }
 }
