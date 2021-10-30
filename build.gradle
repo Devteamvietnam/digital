@@ -70,7 +70,7 @@ dependencies {
 
     implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
     implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
-    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.10'
     implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

@@ -1,6 +1,5 @@
 package com.devteam.digital.core.base;
 
-import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -27,22 +26,18 @@ public class BaseEntity implements Serializable {
 
     @CreatedBy
     @Column(name = "create_by", updatable = false)
-    @ApiModelProperty(value = "founder", hidden = true)
     private String createBy;
 
     @LastModifiedBy
     @Column(name = "update_by")
-    @ApiModelProperty(value = "updater", hidden = true)
     private String updatedBy;
 
     @CreationTimestamp
     @Column(name = "create_time", updatable = false)
-    @ApiModelProperty(value = "Creation time", hidden = true)
     private Timestamp createTime;
 
     @UpdateTimestamp
     @Column(name = "update_time")
-    @ApiModelProperty(value = "Update time", hidden = true)
     private Timestamp updateTime;
 
     /* Group check */
