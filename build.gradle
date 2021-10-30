@@ -58,6 +58,21 @@ dependencies {
     // Javax annotaion
     implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
 
+    implementation group: 'io.springfox', name: 'springfox-oas', version: "${springfoxVersion}"
+
+    implementation group: 'io.springfox', name: 'springfox-oas', version: "${springfoxVersion}"
+
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonVersion
+    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: jacksonVersion
+
+    implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
+    implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.springframework.boot:spring-boot-starter-security'
