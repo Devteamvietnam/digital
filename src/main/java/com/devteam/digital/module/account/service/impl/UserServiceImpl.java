@@ -1,5 +1,6 @@
 package com.devteam.digital.module.account.service.impl;
 
+import com.devteam.digital.core.config.FileProperties;
 import com.devteam.digital.module.account.criteria.UserQueryCriteria;
 import com.devteam.digital.module.account.dto.UserDto;
 import com.devteam.digital.module.account.entity.User;
@@ -25,7 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepo;
-    
+
+    private final FileProperties properties;
+
 
     @Override
     public UserDto findById(long id) {
