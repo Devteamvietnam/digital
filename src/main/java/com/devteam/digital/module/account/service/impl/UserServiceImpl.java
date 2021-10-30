@@ -1,16 +1,17 @@
 package com.devteam.digital.module.account.service.impl;
 
 import com.devteam.digital.core.config.FileProperties;
+import com.devteam.digital.core.util.ValidationUtil;
 import com.devteam.digital.module.account.criteria.UserQueryCriteria;
-import com.devteam.digital.module.account.dto.UserDto;
 import com.devteam.digital.module.account.entity.User;
 import com.devteam.digital.module.account.repository.UserRepository;
 import com.devteam.digital.module.account.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -24,15 +25,17 @@ import java.util.Set;
 @CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepo;
-
+    private final UserRepository userRepo;
     private final FileProperties properties;
 
 
     @Override
-    public UserDto findById(long id) {
-        return null;
+    @Cacheable(key = "'id:' + #p0")
+    @Transactional(rollbackFor = Exception.class)
+    public User findById(long id) {
+        User user = userRepo.findById(id).orElseGet(User::new);
+        ValidationUtil.isNull(user.getId(), "User", "id", id);
+        return user;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findByName(String userName) {
+    public User findByName(String userName) {
         return null;
     }
 
@@ -76,12 +79,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> queryAll(UserQueryCriteria criteria) {
+    public List<User> queryAll(UserQueryCriteria criteria) {
         return null;
     }
 
     @Override
-    public void download(List<UserDto> queryAll, HttpServletResponse response) throws IOException {
+    public void download(List<User> queryAll, HttpServletResponse response) throws IOException {
 
     }
 
