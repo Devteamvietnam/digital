@@ -195,3 +195,18 @@ spring:
 
 logging:
   config: classpath:logback-console-debug-all.xml
+
+# File storage path
+file:
+  mac:
+    path: ~/file/
+    avatar: ~/avatar/
+  linux:
+    path: /home/digital/file/
+    avatar: /home/digital/avatar/
+  windows:
+    path: C:\digital\file\
+    avatar: C:\digital\avatar\
+  # File size /M
+  maxSize: 100
+  avatarMaxSize: 5
