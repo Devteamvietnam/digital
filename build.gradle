@@ -5,7 +5,7 @@ plugins {
     id 'eclipse'
 }
 
-group = 'com.devteam'
+group = 'com.devteam.digital'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
