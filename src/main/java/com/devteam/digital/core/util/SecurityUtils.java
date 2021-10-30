@@ -2,7 +2,6 @@ package com.devteam.digital.core.util;
 
 import com.devteam.digital.core.util.exception.BadRequestException;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -10,7 +9,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.List;
 
 /**
  * Get the currently logged in user
@@ -18,20 +16,13 @@ import java.util.List;
 @Slf4j
 public class SecurityUtils {
 
-    /**
-     * Get the currently logged in user
-     * @return UserDetails
-     */
+
     public static UserDetails getCurrentUser() {
         UserDetailsService userDetailsService = SpringContextHolder.getBean(UserDetailsService.class);
         return userDetailsService.loadUserByUsername(getCurrentUsername());
     }
 
-    /**
-     * Get system user name
-     *
-     * @return System user name
-     */
+
     public static String getCurrentUsername() {
         final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null) {

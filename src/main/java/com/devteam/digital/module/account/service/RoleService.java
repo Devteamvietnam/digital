@@ -20,7 +20,7 @@ public interface RoleService {
     void update(Role resources);
 
     void delete(Set<Long> ids);
-    
+
     List<Role> findByUsersId(Long id);
 
     Integer findByRoles(Set<Role> roles);

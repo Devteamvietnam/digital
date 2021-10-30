@@ -27,5 +27,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByRoleId(Long roleId);
 
     void deleteAllByIdIn(Set<Long> ids);
+    @Query(value = "SELECT count(1) FROM digital_user u, digital_users_roles r WHERE " +
+            "u.user_id = r.user_id AND r.role_id in ?1", nativeQuery = true)
+    int countByRoles(Set<Long> ids);
 
 }
