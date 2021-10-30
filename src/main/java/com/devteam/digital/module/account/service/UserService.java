@@ -31,10 +31,7 @@ public interface UserService {
 
     Object queryAll(UserQueryCriteria criteria, Pageable pageable);
 
-
     List<User> queryAll(UserQueryCriteria criteria);
-
-    void download(List<User> queryAll, HttpServletResponse response) throws IOException;
 
     void updateCenter(User resources);
 }

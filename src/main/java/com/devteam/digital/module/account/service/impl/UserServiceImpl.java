@@ -8,6 +8,7 @@ import com.devteam.digital.core.util.ValidationUtil;
 import com.devteam.digital.core.util.exception.EntityExistException;
 import com.devteam.digital.core.util.exception.EntityNotFoundException;
 import com.devteam.digital.module.account.criteria.UserQueryCriteria;
+import com.devteam.digital.module.account.entity.Role;
 import com.devteam.digital.module.account.entity.User;
 import com.devteam.digital.module.account.repository.UserRepository;
 import com.devteam.digital.module.account.service.UserService;
@@ -23,6 +24,7 @@ import javax.validation.constraints.NotBlank;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -130,8 +132,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updateEmail(String username, String email) {
-
+        userRepo.updateEmail(username, email);
     }
 
     @Override
@@ -144,13 +147,18 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
-    public void download(List<User> queryAll, HttpServletResponse response) throws IOException {
-
-    }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void updateCenter(User resources) {
-
+        User user = userRepo.findById(resources.getId()).orElseGet(User::new);
+        User user1 = userRepo.findByPhone(resources.getPhone());
+        if (user1 != null && !user.getId().equals(user1.getId())) {
+            throw new EntityExistException(User.class, "phone", resources.getPhone());
+        }
+        user.setNickName(resources.getNickName());
+        user.setPhone(resources.getPhone());
+        user.setGender(resources.getGender());
+        userRepo.save(user);
     }
 }

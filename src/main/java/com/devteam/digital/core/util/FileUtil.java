@@ -13,6 +13,7 @@ import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 public class FileUtil {
 
@@ -283,6 +284,7 @@ public class FileUtil {
             }
         }
     }
+
 
     public static String getMd5(File file) {
         return getMd5(getByte(file));
