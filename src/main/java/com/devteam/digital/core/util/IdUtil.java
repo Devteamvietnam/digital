@@ -23,12 +23,4 @@ public class IdUtil {
     public static java.lang.String objectId() {
         return null;
     }
-
-    public static cn.hutool.core.lang.Snowflake createSnowflake(long workerId, long datacenterId) {
-        return null;
-    }
-
-    public static cn.hutool.core.lang.Snowflake getSnowflake(long workerId, long datacenterId) {
-        return null;
-    }
 }

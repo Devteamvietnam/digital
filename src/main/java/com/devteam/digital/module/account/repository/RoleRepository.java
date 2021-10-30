@@ -11,7 +11,7 @@ import java.util.Set;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
     Role findByName(String name);
-    
+
     void deleteAllByIdIn(Set<Long> ids);
 
     @Query(value = "SELECT r.* FROM sys_role r, digital_users_roles u WHERE " +
