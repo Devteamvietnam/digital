@@ -3,6 +3,7 @@ package com.devteam.digital.security.config;
 import com.devteam.digital.core.util.StringUtil;
 import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
+import com.wf.captcha.base.Captcha;
 import lombok.Data;
 
 @Data
