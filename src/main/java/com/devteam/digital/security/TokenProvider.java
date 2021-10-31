@@ -1,7 +1,5 @@
 package com.devteam.digital.security;
 
-import cn.hutool.core.date.DateField;
-import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.IdUtil;
 import com.devteam.digital.security.config.SecurityProperties;
 import io.jsonwebtoken.*;
@@ -16,13 +14,12 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component
 public class TokenProvider implements InitializingBean {
 
-    private final SecurityProperties properties;
+    protected SecurityProperties properties;
     public static final String AUTHORITIES_KEY = "user";
 
     private JwtParser jwtParser;

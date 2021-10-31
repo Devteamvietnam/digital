@@ -15,6 +15,7 @@ import com.devteam.digital.module.account.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final PasswordEncoder passwordEncoder;
-    private final UserService userService;
-    private final RoleService roleService;
+    protected PasswordEncoder passwordEncoder;
+    @Autowired
+    private  UserService userService;
+    @Autowired
+    private  RoleService roleService;
 
     @ApiOperation("Export user data")
     @GetMapping(value = "/download")

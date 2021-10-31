@@ -15,6 +15,7 @@ import com.devteam.digital.module.account.service.UserService;
 import com.devteam.digital.security.service.OnlineUserService;
 import com.devteam.digital.security.service.UserCacheClean;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -34,11 +35,11 @@ import java.util.stream.Collectors;
 @CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final FileProperties properties;
-    private final UserCacheClean userCacheClean;
-    private final OnlineUserService onlineUserService;
+    @Autowired
+    private  UserRepository userRepository;
+    protected  UserMapper userMapper;
+    protected FileProperties properties;
+    protected  OnlineUserService onlineUserService;
 
     @Override
     public Object queryAll(UserQueryCriteria criteria, Pageable pageable) {

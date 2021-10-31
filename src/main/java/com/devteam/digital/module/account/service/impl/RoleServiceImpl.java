@@ -13,6 +13,7 @@ import com.devteam.digital.module.account.repository.UserRepository;
 import com.devteam.digital.module.account.service.RoleService;
 import com.devteam.digital.security.service.UserCacheClean;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -33,10 +34,11 @@ import java.util.stream.Collectors;
 @CacheConfig(cacheNames = "role")
 public class RoleServiceImpl implements RoleService {
 
-    private final RoleRepository roleRepository;
-    private final RoleMapper roleMapper;
-    private final UserRepository userRepository;
-    private final UserCacheClean userCacheClean;
+    @Autowired
+    private  RoleRepository roleRepository;
+    protected  RoleMapper roleMapper;
+    @Autowired
+    private  UserRepository userRepository;
 
     @Override
     public List<RoleDto> queryAll() {

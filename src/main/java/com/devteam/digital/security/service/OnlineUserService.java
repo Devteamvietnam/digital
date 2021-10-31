@@ -21,7 +21,7 @@ public class OnlineUserService {
 
     private static final Logger logger = LoggerFactory.getLogger(OnlineUserService.class);
 
-    private final SecurityProperties properties;
+    protected SecurityProperties properties;
 
     public OnlineUserService(SecurityProperties properties) {
         this.properties = properties;

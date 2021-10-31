@@ -6,7 +6,7 @@ import com.devteam.digital.module.account.entity.Role;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring" , unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RoleMapper extends BaseMapper<RoleDto, Role> {
 
 }

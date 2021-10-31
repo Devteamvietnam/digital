@@ -16,15 +16,7 @@ public class RsaUtils {
     private static final String SRC = "123456";
 
     public static void main(String[] args) throws Exception {
-        System.out.println("\n");
         RsaKeyPair keyPair = generateKeyPair();
-        System.out.println("Public key：" + keyPair.getPublicKey());
-        System.out.println("Private key：" + keyPair.getPrivateKey());
-        System.out.println("\n");
-        test1(keyPair);
-        System.out.println("\n");
-        test2(keyPair);
-        System.out.println("\n");
     }
 
     /**
@@ -34,9 +26,6 @@ public class RsaUtils {
         System.out.println("***************** Public key encryption and private key decryption start *****************");
         String text1 = encryptByPublicKey(keyPair.getPublicKey(), RsaUtils.SRC);
         String text2 = decryptByPrivateKey(keyPair.getPrivateKey(), text1);
-        System.out.println("Before encryption：" + RsaUtils.SRC);
-        System.out.println("After encryption：" + text1);
-        System.out.println("After decryption：" + text2);
         if (RsaUtils.SRC.equals(text2)) {
             System.out.println("The decrypted string is consistent with the original string, and the decryption is successful");
         } else {
@@ -47,7 +36,6 @@ public class RsaUtils {
 
     /**
      * Private key encryption and public key decryption
-     * @throws Exception /
      */
     private static void test2(RsaKeyPair keyPair) throws Exception {
         System.out.println("***************** Private key encryption and public key decryption start *****************");
@@ -67,10 +55,6 @@ public class RsaUtils {
     /**
      * Public key decryption
      *
-     * @param publicKeyText
-     * @param text
-     * @return /
-     * @throws Exception /
      */
     public static String decryptByPublicKey(String publicKeyText, String text) throws Exception {
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyText));
@@ -85,10 +69,6 @@ public class RsaUtils {
     /**
      * Private key encryption
      *
-     * @param privateKeyText
-     * @param text
-     * @return /
-     * @throws Exception /
      */
     public static String encryptByPrivateKey(String privateKeyText, String text) throws Exception {
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(Base64.decodeBase64(privateKeyText));
@@ -121,9 +101,6 @@ public class RsaUtils {
     /**
      * Public key encryption
      *
-     * @param publicKeyText
-     * @param text
-     * @return /
      */
     public static String encryptByPublicKey(String publicKeyText, String text) throws Exception {
         X509EncodedKeySpec x509EncodedKeySpec2 = new X509EncodedKeySpec(Base64.decodeBase64(publicKeyText));
@@ -137,9 +114,6 @@ public class RsaUtils {
 
     /**
      * Build an RSA key pair
-     *
-     * @return /
-     * @throws NoSuchAlgorithmException /
      */
     public static RsaKeyPair generateKeyPair() throws NoSuchAlgorithmException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
