@@ -1,6 +1,6 @@
-package com.devteam.digital.core.annotation;
+package com.devteam.core.annotation;
 
-import com.devteam.digital.core.enums.DataSourceType;
+import com.devteam.core.enums.DataSourceType;
 import java.lang.annotation.*;
 
 @Target({ ElementType.METHOD, ElementType.TYPE })

@@ -1,4 +1,4 @@
-package com.devteam.digital.module.account.entity;
+package com.devteam.module.account.entity;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

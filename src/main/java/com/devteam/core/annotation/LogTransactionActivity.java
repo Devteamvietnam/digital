@@ -1,4 +1,4 @@
-package com.devteam.digital.core.annotation;
+package com.devteam.core.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 

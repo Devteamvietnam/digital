@@ -1,3 +1,3 @@
-package com.devteam.digital.core.enums;
+package com.devteam.core.enums;
 
 public enum AccessType { VION, ACCOUNT, EMPLOYEE, NONE }

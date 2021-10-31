@@ -1,4 +1,4 @@
-package com.devteam.digital.core.enums;
+package com.devteam.core.enums;
 
 public enum EditMode {
   DRAFT, VALIDATED, LOCKED;

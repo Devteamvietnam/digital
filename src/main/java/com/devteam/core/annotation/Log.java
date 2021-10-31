@@ -1,7 +1,7 @@
-package com.devteam.digital.core.annotation;
+package com.devteam.core.annotation;
 
-import com.devteam.digital.core.enums.BusinessType;
-import com.devteam.digital.core.enums.OperatorType;
+import com.devteam.core.enums.BusinessType;
+import com.devteam.core.enums.OperatorType;
 
 import java.lang.annotation.*;
 
