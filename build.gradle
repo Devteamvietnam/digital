@@ -65,6 +65,9 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation group: 'org.springframework.batch', name: 'spring-batch-core', version: '4.3.3'
+    implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
+    implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.10'
+
     // flyway
     implementation 'org.flywaydb:flyway-core'
     //lombok
