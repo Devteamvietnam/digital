@@ -98,6 +98,8 @@ dependencies {
     implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.4'
     implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.7'
     implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 
     // junitTest
     testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"

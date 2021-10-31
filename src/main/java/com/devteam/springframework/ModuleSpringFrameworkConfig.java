@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @ComponentScan(
-  basePackageClasses = { com.devteam.springframework.AppEnv.class }
+  basePackageClasses = { AppEnv.class }
 )
 @EnableScheduling
 @EnableConfigurationProperties
