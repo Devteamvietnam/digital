@@ -57,6 +57,9 @@ dependencies {
     implementation "org.slf4j:slf4j-api:${slf4jVersion}"
     implementation "org.slf4j:slf4j-ext:${slf4jVersion}"
 
+    implementation group: "javax.servlet", name: "javax.servlet-api", version: "3.1.0"
+
+
     // Utilities
     implementation group: 'com.google.guava', name: 'guava', version: "${guavaVersion}"
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: "${commonLang3Version}"
@@ -80,6 +83,7 @@ dependencies {
     implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
     implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.10'
     implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
+    implementation group: 'io.swagger', name: 'swagger-core', version: '1.5.20'
     // excel
     implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
