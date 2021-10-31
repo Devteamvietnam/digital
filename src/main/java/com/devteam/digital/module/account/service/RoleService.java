@@ -29,12 +29,7 @@ public interface RoleService {
 
     Integer findByRoles(Set<Role> roles);
 
-    void updateMenu(Role resources, RoleDto roleDTO);
-
-    void untiedMenu(Long id);
-
     Object queryAll(RoleQueryCriteria criteria, Pageable pageable);
-
 
     List<RoleDto> queryAll(RoleQueryCriteria criteria);
 
@@ -43,6 +38,5 @@ public interface RoleService {
     List<GrantedAuthority> mapToGrantedAuthorities(UserDto user);
 
     void verification(Set<Long> ids);
-
 
 }

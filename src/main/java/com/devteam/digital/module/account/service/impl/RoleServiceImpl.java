@@ -1,18 +1,21 @@
 package com.devteam.digital.module.account.service.impl;
 
-import com.devteam.digital.core.util.StringUtil;
-import com.devteam.digital.core.util.ValidationUtil;
+import com.devteam.digital.core.util.*;
 import com.devteam.digital.core.util.exception.BadRequestException;
 import com.devteam.digital.core.util.exception.EntityExistException;
 import com.devteam.digital.module.account.criteria.RoleQueryCriteria;
+import com.devteam.digital.module.account.dto.RoleDto;
+import com.devteam.digital.module.account.dto.UserDto;
 import com.devteam.digital.module.account.entity.Role;
-import com.devteam.digital.module.account.entity.User;
+import com.devteam.digital.module.account.mapstruct.RoleMapper;
 import com.devteam.digital.module.account.repository.RoleRepository;
 import com.devteam.digital.module.account.repository.UserRepository;
 import com.devteam.digital.module.account.service.RoleService;
+import com.devteam.digital.security.service.UserCacheClean;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,6 +23,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,20 +34,33 @@ import java.util.stream.Collectors;
 public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;
+    private final RoleMapper roleMapper;
     private final UserRepository userRepository;
+    private final UserCacheClean userCacheClean;
 
     @Override
-    public List<Role> queryAll() {
-        return roleRepository.findAll();
+    public List<RoleDto> queryAll() {
+        return roleMapper.toDto(roleRepository.findAll());
+    }
+
+    @Override
+    public List<RoleDto> queryAll(RoleQueryCriteria criteria) {
+        return roleMapper.toDto(roleRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder)));
+    }
+
+    @Override
+    public Object queryAll(RoleQueryCriteria criteria, Pageable pageable) {
+        Page<Role> page = roleRepository.findAll((root, criteriaQuery, criteriaBuilder) -> QueryHelp.getPredicate(root, criteria, criteriaBuilder), pageable);
+        return PageUtil.toPage(page.map(roleMapper::toDto));
     }
 
     @Override
     @Cacheable(key = "'id:' + #p0")
     @Transactional(rollbackFor = Exception.class)
-    public Role findById(long id) {
+    public RoleDto findById(long id) {
         Role role = roleRepository.findById(id).orElseGet(Role::new);
         ValidationUtil.isNull(role.getId(), "Role", "id", id);
-        return role;
+        return roleMapper.toDto(role);
     }
 
     @Override
@@ -73,13 +91,14 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void delete(Set<Long> ids) {
         roleRepository.deleteAllByIdIn(ids);
     }
 
     @Override
-    public List<Role> findByUsersId(Long id) {
-        return new ArrayList<>(roleRepository.findByUserId(id));
+    public List<RoleDto> findByUsersId(Long id) {
+        return roleMapper.toDto(new ArrayList<>(roleRepository.findByUserId(id)));
     }
 
     @Override
@@ -87,25 +106,16 @@ public class RoleServiceImpl implements RoleService {
         if (roles.size() == 0) {
             return Integer.MAX_VALUE;
         }
-        Set<Role> findRole = new HashSet<>();
+        Set<RoleDto> roleDtos = new HashSet<>();
         for (Role role : roles) {
-            findRole.add(findById(role.getId()));
+            roleDtos.add(findById(role.getId()));
         }
-        return Collections.min(findRole.stream().map(Role::getLevel).collect(Collectors.toList()));
+        return Collections.min(roleDtos.stream().map(RoleDto::getLevel).collect(Collectors.toList()));
     }
 
     @Override
-    public Object queryAll(RoleQueryCriteria criteria, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<Role> queryAll(RoleQueryCriteria criteria) {
-        return null;
-    }
-
-    @Override
-    public List<GrantedAuthority> mapToGrantedAuthorities(User user) {
+    @Cacheable(key = "'auth:' + #p0.id")
+    public List<GrantedAuthority> mapToGrantedAuthorities(UserDto user) {
         Set<String> permissions = new HashSet<>();
         // If it is an administrator, return directly
         if (user.getIsAdmin()) {
@@ -119,9 +129,24 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    public void download(List<RoleDto> roles, HttpServletResponse response) throws IOException {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (RoleDto role : roles) {
+            Map<String, Object> map = new LinkedHashMap<>();
+            map.put("Name", role.getName());
+            map.put("Level", role.getLevel());
+            map.put("Description", role.getDescription());
+            map.put("Creation Date", role.getCreateTime());
+            list.add(map);
+        }
+        FileUtil.downloadExcel(list, response);
+    }
+
+    @Override
     public void verification(Set<Long> ids) {
         if (userRepository.countByRoles(ids) > 0) {
             throw new BadRequestException("The selected role has user associations, please unlink and try again!");
         }
     }
+
 }
