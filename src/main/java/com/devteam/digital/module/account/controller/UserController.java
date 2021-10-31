@@ -7,11 +7,9 @@ import com.devteam.digital.module.account.entity.User;
 import com.devteam.digital.module.account.service.RoleService;
 import com.devteam.digital.module.account.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +22,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api/v1/digital/users")
 @RequiredArgsConstructor
 public class UserController {
-    
+
     private final UserService userService;
     private final RoleService roleService;
 
