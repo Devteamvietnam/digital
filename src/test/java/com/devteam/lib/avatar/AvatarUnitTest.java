@@ -1,4 +1,4 @@
-package com.devteam.avatar;
+package com.devteam.lib.avatar;
 
 import com.devteam.lib.util.avatar.AvatarUtil;
 import org.junit.jupiter.api.Test;

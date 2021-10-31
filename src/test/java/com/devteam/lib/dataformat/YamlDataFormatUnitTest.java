@@ -1,4 +1,4 @@
-package com.devteam.dataformat;
+package com.devteam.lib.dataformat;
 
 import com.devteam.lib.util.dataformat.DataSerializer;
 import com.fasterxml.jackson.core.type.TypeReference;
