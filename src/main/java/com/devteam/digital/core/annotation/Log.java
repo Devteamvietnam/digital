@@ -1,7 +1,7 @@
 package com.devteam.digital.core.annotation;
 
-import com.vion.module.enums.BusinessType;
-import com.vion.module.enums.OperatorType;
+import com.devteam.digital.core.enums.BusinessType;
+import com.devteam.digital.core.enums.OperatorType;
 
 import java.lang.annotation.*;
 

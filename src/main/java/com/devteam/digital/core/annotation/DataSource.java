@@ -1,7 +1,6 @@
 package com.devteam.digital.core.annotation;
 
-import com.vion.module.enums.DataSourceType;
-
+import com.devteam.digital.core.enums.DataSourceType;
 import java.lang.annotation.*;
 
 @Target({ ElementType.METHOD, ElementType.TYPE })
