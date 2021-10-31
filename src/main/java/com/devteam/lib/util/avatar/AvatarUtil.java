@@ -1,11 +1,10 @@
-package com.devteam.lib.avatar;
+package com.devteam.lib.util.avatar;
 
+import com.devteam.lib.util.error.ErrorType;
+import com.devteam.lib.util.error.RuntimeError;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.vion.util.error.ErrorType;
-import com.vion.util.error.RuntimeError;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
