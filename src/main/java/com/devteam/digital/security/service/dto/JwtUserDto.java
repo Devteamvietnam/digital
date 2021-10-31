@@ -1,5 +1,6 @@
 package com.devteam.digital.security.service.dto;
 
+import com.devteam.digital.module.account.dto.UserDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
