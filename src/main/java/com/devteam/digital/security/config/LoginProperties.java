@@ -1,10 +1,15 @@
 package com.devteam.digital.security.config;
 
 import com.devteam.digital.core.util.StringUtil;
+import com.devteam.digital.core.util.exception.BadConfigurationException;
 import com.wf.captcha.ArithmeticCaptcha;
 import com.wf.captcha.GifCaptcha;
+import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import lombok.Data;
+
+import java.awt.*;
+import java.util.Objects;
 
 @Data
 public class LoginProperties {
@@ -30,8 +35,6 @@ public class LoginProperties {
 
     /**
      *Get verification code production class
-     *
-     * @return /
      */
     public Captcha getCaptcha() {
         if (Objects.isNull(loginCode)) {
@@ -45,9 +48,6 @@ public class LoginProperties {
 
     /**
      * Produce verification code based on configuration information
-     *
-     * @param loginCode
-     * @return /
      */
     private Captcha switchCaptcha(LoginCode loginCode) {
         Captcha captcha;
