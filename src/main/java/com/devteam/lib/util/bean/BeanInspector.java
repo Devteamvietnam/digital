@@ -10,7 +10,7 @@ import java.util.*;
 @Slf4j
 public class BeanInspector<T> {
     static Object[] EMPTY_ARGS = new Object[0] ;
-    static WeakHashMap<String, BeanInspector> inspectors = new WeakHashMap<String, BeanInspector>() ;
+    static WeakHashMap<String, BeanInspector> inspectors = new WeakHashMap<>() ;
 
     private Map<String, Field> fields = new HashMap<String, Field>() ;
     private Map<String, PropertyDescriptor> pdescriptors = new HashMap<String, PropertyDescriptor>() ;
