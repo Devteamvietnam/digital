@@ -31,13 +31,18 @@ project.ext {
     jacksonVersion           = '2.12.3'
     springfoxVersion           = '3.0.0'
 
+    springBootVersion        = '2.5.0'
     springFrameworkVersion   = '5.3.7'
     springSecurityVersion    = '5.3.3.RELEASE'
     springIntegrationVersion = '5.5.0'
     springDataVersion        = '2.5.1'
     springDataJpaVersion     = '2.5.1'
     springBatchVersion       = '4.3.3'
-    jwtVersion               = '0.11.2'
+
+    hibernateVersion          = '5.4.18.Final'
+    hibernateValidatorVersion = '5.4.3.Final'
+
+    jettyVersion             = "9.4.30.v20200611"
 
 }
 
@@ -97,6 +102,41 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    implementation "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}" ;
+
+    implementation group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+    implementation group: "javax.persistence", name: "javax.persistence-api", version: '2.2'
+    implementation group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api',   version: '1.0.0.Final'
+
+    implementation group: "org.hibernate", name: "hibernate-core",           version: hibernateVersion
+    implementation group: "org.hibernate", name: "hibernate-entitymanager",  version: hibernateVersion
+
+    implementation group: "org.hibernate", name: "hibernate-validator",      version: hibernateValidatorVersion
+
+    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+
+    implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+    implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.4'
+    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
+
+    implementation group: 'com.github.spullara.mustache.java',  name: 'compiler',  version: '0.9.10'
+    implementation group: 'com.github.jknack', name: 'handlebars', version: '4.2.0'
+
+
+    implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-core',  version: '9.1.22'
+    implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-pdf',   version: '9.1.22'
+
+    //Those libs are used to convert pdf to image
+    implementation group: 'org.apache.pdfbox',  name: 'pdfbox',  version: '2.0.21'
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
+
+    implementation group: 'com.flipkart.zjsonpatch', name: 'zjsonpatch', version: '0.4.6'
+
+    implementation 'org.hsqldb:hsqldb:2.3.4'
+    runtimeOnly 'org.postgresql:postgresql:42.2.5'
+    runtimeOnly 'com.zaxxer:HikariCP:3.4.5'
 }
 
 test {
