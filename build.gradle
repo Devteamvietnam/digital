@@ -8,10 +8,14 @@ plugins {
 group = 'com.devteam.digital'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
+compileJava.options.encoding = 'UTF-8'
 
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
+    }
+    compile {
+        transitive = true
     }
 }
 
@@ -75,7 +79,7 @@ dependencies {
     implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
     implementation group: 'xerces', name: 'xercesImpl', version: '2.12.1'
-    
+
     // Core
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
