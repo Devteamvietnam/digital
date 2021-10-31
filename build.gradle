@@ -68,6 +68,12 @@ dependencies {
     implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
     implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.10'
 
+    // swagger
+    implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
+    implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
+    implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
+
     // flyway
     implementation 'org.flywaydb:flyway-core'
     //lombok
