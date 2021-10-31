@@ -63,6 +63,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation group: 'org.springframework.batch', name: 'spring-batch-core', version: '4.3.3'
     // flyway
     implementation 'org.flywaydb:flyway-core'
     //lombok
@@ -89,9 +91,14 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation group: 'org.springframework.batch', name: 'spring-batch-test', version: '4.3.3'
 
     // other package
     implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.4'
+    implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.7'
+    implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+
     // junitTest
     testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
     implementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
