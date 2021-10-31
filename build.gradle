@@ -67,12 +67,25 @@ dependencies {
     implementation group: 'org.springframework.batch', name: 'spring-batch-core', version: '4.3.3'
     implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
     implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.10'
+    implementation group: 'org.springframework', name: 'spring-websocket', version: '5.3.12'
 
     // swagger
     implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
     implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
     implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
     implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
+
+    //springfox
+    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+    implementation group: 'io.springfox', name: 'springfox-core', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-oas', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-spi', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-schema', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-swagger-common', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-spring-web', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-spring-webmvc', version: springfoxVersion
+    implementation group: 'io.springfox', name: 'springfox-spring-webflux', version: springfoxVersion
 
     // flyway
     implementation 'org.flywaydb:flyway-core'

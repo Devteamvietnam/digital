@@ -1,23 +1,24 @@
 package com.devteam;
 
+import com.devteam.lib.util.text.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.Configuration;
 
 
-@Configuration
-@EnableConfigurationProperties
-@SpringBootApplication(
-        exclude = {
-                SecurityAutoConfiguration.class
-        }
-)
-public class BDigitalApplication {
+@Slf4j
+public class ServerApp {
 
     static ConfigurableApplicationContext context;
+
+    static public ApplicationContext run(String[] args, long wait) throws Exception {
+        log.info("Launch ServerApp with args: {}", StringUtil.joinStringArray(args, " "));
+        System.out.println("(♥◠‿◠)ﾉﾞ  Stating Project Success ლ(´ڡ`ლ)ﾞ  \n");
+        context = SpringApplication.run(ServerAppConfig.class, args);
+        isRunning(wait);
+        return context;
+    }
 
     static public boolean isRunning(long waitTime) {
         boolean running = false;
@@ -43,7 +44,7 @@ public class BDigitalApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(BDigitalApplication.class, args);
+        SpringApplication.run(ServerApp.class, args);
         isRunning(3000);
     }
 
