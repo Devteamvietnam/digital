@@ -12,11 +12,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-public class WebSecurityConfigurer implements WebMvcConfigurer {
+public class ConfigurerAdapter implements WebMvcConfigurer {
     /** File configuration */
     private final FileProperties properties;
 
-    public WebSecurityConfigurer(FileProperties properties) {
+    public ConfigurerAdapter(FileProperties properties) {
         this.properties = properties;
     }
 
