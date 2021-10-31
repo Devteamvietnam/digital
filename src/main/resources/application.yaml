@@ -210,3 +210,51 @@ file:
   # File size /M
   maxSize: 100
   avatarMaxSize: 5
+#Email verification code valid time/second
+code:
+  expiration: 300
+
+#Password encrypted transmission, front-end public key encryption, back-end private key decryption
+rsa:
+  private_key: MIIBUwIBADANBgkqhkiG9w0BAQEFAASCAT0wggE5AgEAAkEA0vfvyTdGJkdbHkB8mp0f3FE0GYP3AYPaJF7jUd1M0XxFSE2ceK3k2kw20YvQ09NJKk+OMjWQl9WitG9pB6tSCQIDAQABAkA2SimBrWC2/wvauBuYqjCFwLvYiRYqZKThUS3MZlebXJiLB+Ue/gUifAAKIg1avttUZsHBHrop4qfJCwAI0+YRAiEA+W3NK/RaXtnRqmoUUkb59zsZUBLpvZgQPfj1MhyHDz0CIQDYhsAhPJ3mgS64NbUZmGWuuNKp5coY2GIj/zYDMJp6vQIgUueLFXv/eZ1ekgz2Oi67MNCk5jeTF2BurZqNLR3MSmUCIFT3Q6uHMtsB9Eha4u7hS31tj1UWE+D+ADzp59MGnoftAiBeHT7gDMuqeJHPL4b+kC+gzV4FGTfhR9q3tTbklZkD2A==
+
+#jwt
+jwt:
+  header: Authorization
+  # Token prefix
+  token-start-with: Bearer
+  # The token must be encoded with a Base64 of at least 88 bits
+  base64-secret: ZmQ0ZGI5NjQ0MDQwY2I4MjMxY2Y3ZmI3MjdhN2ZmMjNhODViOTg1ZGE0NTBjMGM4NDA5NzYxMjdjOWMwYWRmZTBlZjlhNGY3ZTg4Y2U3YTE1ODVkZDU5Y2Y3OGYwZWE1NzUzNWQ2YjFjZDc0NGMxZWU2MmQ3MjY1NzJmNTE0MzI=
+  # The token expiration time is here in units/milliseconds, the default is 4 hours, which can be generated on this website https://www.convertworld.com/en/time/milliseconds.html
+  token-validity-in-seconds: 14400000
+  #Online user key
+  online-key: online-token-
+  # Verification code
+  code-key: code-key-
+  # The token renewal check time range (default 30 minutes, in milliseconds). If the user operates within a period of time when the token is about to expire, the user's token will be renewed
+  detect: 1800000
+  # Renewal time range, the default is 1 hour, in milliseconds
+  renew: 3600000
+
+# Login related configuration
+login:
+  # Login cache
+  cache-enable: true
+  #  Whether to restrict single user login
+  single-login: false
+  #  Verification code
+  login-code:
+    #  Verification code type configuration View LoginProperties class
+    code-type: arithmetic
+    #  Login graphic verification code valid time/minute
+    expiration: 2
+    #  Verification code height
+    width: 111
+    #Verification code width
+    heigth: 36
+    # Content length
+    length: 2
+    # Font name, use the default font if blank
+    font-name:
+    # font size
+    font-size: 25
