@@ -1,4 +1,4 @@
-package com.devteam.springframework;
+package com.devteam.module.springframework;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

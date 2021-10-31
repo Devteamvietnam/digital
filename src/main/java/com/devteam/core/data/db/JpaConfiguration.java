@@ -4,7 +4,7 @@ import com.devteam.core.data.cache.CachingConfig;
 import com.devteam.core.data.db.activity.CustomHibernateInterceptor;
 import com.devteam.core.data.db.activity.TransactionActivityConfiguration;
 import com.devteam.core.data.db.repository.TenantRepositoryFactoryBean;
-import com.devteam.springframework.ModuleSpringFrameworkConfig;
+import com.devteam.module.springframework.ModuleSpringFrameworkConfig;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

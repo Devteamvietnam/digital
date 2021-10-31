@@ -1,6 +1,6 @@
 package com.devteam.core.http;
 
-import com.devteam.springframework.ModuleSpringFrameworkConfig;
+import com.devteam.module.springframework.ModuleSpringFrameworkConfig;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

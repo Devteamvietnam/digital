@@ -1,6 +1,6 @@
 package com.devteam.core.data.db.activity;
 
-import com.devteam.springframework.ModuleSpringFrameworkConfig;
+import com.devteam.module.springframework.ModuleSpringFrameworkConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
