@@ -12,11 +12,11 @@ public class JVMThreads {
   private String threadCount;
   private String threadDeamonCount;
 
-  private ArrayList<com.vion.util.jvm.JVMThread> threads;
+  private ArrayList<JVMThread> threads;
 
   public JVMThreads() {
     ThreadMXBean mbean = ManagementFactory.getThreadMXBean();
-    threads = new ArrayList<com.vion.util.jvm.JVMThread>();
+    threads = new ArrayList<JVMThread>();
 
     threadStartedCount = Long.toString(mbean.getTotalStartedThreadCount());
     threadPeakCount = Long.toString(mbean.getPeakThreadCount());
@@ -27,7 +27,7 @@ public class JVMThreads {
     for(int i = 0; i < tid.length; i++) {
       ThreadInfo tInfo = mbean.getThreadInfo(tid[i], 10) ;
       if(tInfo == null) continue ;
-      com.vion.util.jvm.JVMThread apptInfo = new com.vion.util.jvm.JVMThread(tInfo);
+      JVMThread apptInfo = new JVMThread(tInfo);
       apptInfo.setThreadCPUTime(Long.toString(mbean.getThreadCpuTime(tid[i])));
       apptInfo.setThreadUserTime(Long.toString(mbean.getThreadUserTime(tid[i])));
       threads.add(apptInfo);
@@ -46,6 +46,6 @@ public class JVMThreads {
   public String getThreadDeamonCount() { return threadDeamonCount; }
   public void setThreadDeamonCount(String threadDeamonCount) { this.threadDeamonCount = threadDeamonCount; }
 
-  public ArrayList<com.vion.util.jvm.JVMThread> getThreads() { return threads; }
-  public void setThreads(ArrayList<com.vion.util.jvm.JVMThread> threads) { this.threads = threads; }
+  public ArrayList<JVMThread> getThreads() { return threads; }
+  public void setThreads(ArrayList<JVMThread> threads) { this.threads = threads; }
 }

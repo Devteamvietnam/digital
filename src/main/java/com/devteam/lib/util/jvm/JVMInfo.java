@@ -1,6 +1,6 @@
 package com.devteam.lib.util.jvm;
 
-import com.vion.util.text.DateUtil;
+import com.devteam.lib.util.text.DateUtil;
 
 import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
@@ -13,8 +13,8 @@ public class JVMInfo {
   private String                          upTime;
 
   private MemoryInfo                      memoryInfo;
-  private ArrayList<com.vion.util.jvm.GarbageCollectorInfo> garbageCollectorInfo;
-  private com.vion.util.jvm.JVMThreads threads;
+  private ArrayList<GarbageCollectorInfo> garbageCollectorInfo;
+  private JVMThreads threads;
 
   public JVMInfo() { }
 
@@ -24,12 +24,12 @@ public class JVMInfo {
     memoryInfo = new MemoryInfo().init();
 
     List<GarbageCollectorMXBean> gcbeans = ManagementFactory.getGarbageCollectorMXBeans() ;
-    garbageCollectorInfo = new ArrayList<com.vion.util.jvm.GarbageCollectorInfo>();
+    garbageCollectorInfo = new ArrayList<GarbageCollectorInfo>();
     for(int i = 0; i < gcbeans.size(); i++) {
       GarbageCollectorMXBean gcbean = gcbeans.get(i) ;
-      garbageCollectorInfo.add(new com.vion.util.jvm.GarbageCollectorInfo(gcbean));
+      garbageCollectorInfo.add(new GarbageCollectorInfo(gcbean));
     }
-    threads = new com.vion.util.jvm.JVMThreads();
+    threads = new JVMThreads();
     return this;
   }
 
@@ -42,11 +42,11 @@ public class JVMInfo {
   public MemoryInfo getMemoryInfo() { return memoryInfo; }
   public void setMemoryInfo(MemoryInfo memoryInfo) { this.memoryInfo = memoryInfo; }
 
-  public ArrayList<com.vion.util.jvm.GarbageCollectorInfo> getGarbageCollectorInfo() { return garbageCollectorInfo; }
-  public void setGarbageCollectorInfo(ArrayList<com.vion.util.jvm.GarbageCollectorInfo> garbageCollectorInfo) {
+  public ArrayList<GarbageCollectorInfo> getGarbageCollectorInfo() { return garbageCollectorInfo; }
+  public void setGarbageCollectorInfo(ArrayList<GarbageCollectorInfo> garbageCollectorInfo) {
     this.garbageCollectorInfo = garbageCollectorInfo;
   }
 
-  public com.vion.util.jvm.JVMThreads getThreads() { return threads; }
-  public void setThreads(com.vion.util.jvm.JVMThreads threads) { this.threads = threads; }
+  public JVMThreads getThreads() { return threads; }
+  public void setThreads(JVMThreads threads) { this.threads = threads; }
 }
