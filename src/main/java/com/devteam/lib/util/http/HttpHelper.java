@@ -1,6 +1,6 @@
 package com.devteam.lib.util.http;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import com.devteam.lib.util.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
