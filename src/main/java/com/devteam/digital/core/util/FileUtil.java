@@ -1,11 +1,17 @@
 package com.devteam.digital.core.util;
 
+import cn.hutool.core.io.IoUtil;
+import cn.hutool.poi.excel.BigExcelWriter;
+import cn.hutool.poi.excel.ExcelUtil;
 import com.devteam.digital.core.util.exception.BadRequestException;
 import com.devteam.digital.core.util.exception.IORuntimeException;
 import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
@@ -13,6 +19,7 @@ import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 public class FileUtil {
@@ -256,9 +263,6 @@ public class FileUtil {
     /**
      * download file
      *
-     * @param request  /
-     * @param response /
-     * @param file     /
      */
     public static void downloadFile(HttpServletRequest request, HttpServletResponse response, File file, boolean deleteOnExit) {
         response.setCharacterEncoding(request.getCharacterEncoding());
@@ -285,6 +289,31 @@ public class FileUtil {
         }
     }
 
+    /**
+     *  excel
+     */
+    public static void downloadExcel(List<Map<String, Object>> list, HttpServletResponse response) throws IOException {
+        String tempPath = SYS_TEM_DIR + IdUtil.fastSimpleUUID() + ".xlsx";
+        File file = new File(tempPath);
+        BigExcelWriter writer = ExcelUtil.getBigWriter(file);
+        // Write out the content at once, use the default style, and force the title to be output
+        writer.write(list, true);
+        SXSSFSheet sheet = (SXSSFSheet)writer.getSheet();
+        //The above needs to be forced to SXSSFSheet or there is no trackAllColumnsForAutoSizing method
+        sheet.trackAllColumnsForAutoSizing();
+        //Column width adaptive
+        writer.autoSizeColumnAll();
+        //response HttpServletResponse
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8");
+        //test.xls It is the file name of the pop-up download dialog box. It cannot be Chinese. Please encode Chinese by yourself
+        response.setHeader("Content-Disposition", "attachment;filename=file.xlsx");
+        ServletOutputStream out = response.getOutputStream();
+        // // Remember to close the output Servlet stream here
+        file.deleteOnExit();
+        writer.flush(out, true);
+        // Remember to close the output Servlet stream here
+        IoUtil.close(out);
+    }
 
     public static String getMd5(File file) {
         return getMd5(getByte(file));
