@@ -1,6 +1,7 @@
 package com.devteam.digital.module.account.service;
 
 import com.devteam.digital.module.account.criteria.UserQueryCriteria;
+import com.devteam.digital.module.account.dto.UserDto;
 import com.devteam.digital.module.account.entity.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,7 +14,7 @@ import java.util.Set;
 
 public interface UserService {
 
-    User findById(long id);
+    UserDto findById(long id);
 
     void create(User resources);
 
@@ -21,7 +22,8 @@ public interface UserService {
 
     void delete(Set<Long> ids);
 
-    User findByName(String userName);
+    UserDto findByName(String userName);
+
 
     void updatePass(String username, String encryptPassword);
 
@@ -31,7 +33,10 @@ public interface UserService {
 
     Object queryAll(UserQueryCriteria criteria, Pageable pageable);
 
-    List<User> queryAll(UserQueryCriteria criteria);
+    List<UserDto> queryAll(UserQueryCriteria criteria);
+
+
+    void download(List<UserDto> queryAll, HttpServletResponse response) throws IOException;
 
     void updateCenter(User resources);
 }
