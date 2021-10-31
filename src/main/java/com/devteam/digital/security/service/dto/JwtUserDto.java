@@ -14,9 +14,6 @@ import java.util.stream.Collectors;
 public class JwtUserDto implements UserDetails {
 
     private final UserDto user;
-
-    private final List<Long> dataScopes;
-
     private final List<GrantedAuthority> authorities;
 
     public Set<String> getRoles() {
