@@ -7,6 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
 @EnableConfigurationProperties
@@ -15,6 +16,9 @@ import org.springframework.context.annotation.Configuration;
                 SecurityAutoConfiguration.class
         }
 )
+@Import(value = {
+        WebSecurityConfig.class, WebResourceConfig.class
+})
 public class ServerApp {
     static ConfigurableApplicationContext context;
 

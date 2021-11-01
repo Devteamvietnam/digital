@@ -60,16 +60,22 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    /************** Srping Security*****************/
+    implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-crypto", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-rsa", version: "1.0.1.RELEASE"
+
     /***************** Flywaydb *****************/
     implementation 'org.flywaydb:flyway-core'
     /**************** lombok ******************/
     compileOnly 'org.projectlombok:lombok'
     /**************** Database ***************/
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    runtimeOnly 'org.postgresql:postgresql'
+    implementation group: "com.h2database", name: "h2", version: '1.4.200'
     implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+    implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '9.2.0.jre11'
     /*********************Cache********************/
     implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
     implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
@@ -180,12 +186,6 @@ dependencies {
     implementation group: 'javax.batch', name: 'javax.batch-api', version: '1.0.1'
     implementation group: 'javax.mail', name: 'mail', version: '1.4'
     implementation group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
-
-    // Database deploy
-    implementation group: "com.h2database", name: "h2", version: '1.4.200'
-    implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
-    implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '9.2.0.jre11'
 
 
 }
