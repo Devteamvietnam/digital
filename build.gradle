@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
     id 'eclipse'
+    id 'maven-publish'
 }
 
 group = 'com.devteam'
@@ -37,6 +38,17 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.devteam'
+            artifactId = 'com.devteam'
+            version = "0.0.1-SNAPSHOT"
+            from components.java
+        }
+    }
 }
 
 dependencies {
@@ -179,8 +191,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
-
-    filter {
-        includeTestsMatching "*UnitTest"
-    }
+//
+//    filter {
+//        includeTestsMatching "*UnitTest"
+//    }
 }
