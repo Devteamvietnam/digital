@@ -1,6 +1,6 @@
 package com.devteam.core.data.db.query;
 
-import com.devteam.lib.bean.BeanInspector;
+import com.devteam.lib.util.bean.BeanInspector;
 import com.devteam.lib.util.text.DateUtil;
 import com.devteam.lib.util.text.StringUtil;
 

@@ -122,14 +122,14 @@ public class BeanInspector<T> {
         return instance ;
     }
 
-//    static public <T> BeanInspector get(Class<T> type) {
-//        BeanInspector inspector = inspectors.get(type.getName()) ;
-//        if(inspector == null) {
-//            inspector = new BeanInspector<T>(type) ;
-//            inspectors.put(type.getName(), inspector) ;
-//        }
-//        return inspector ;
-//    }
+    static public <T> BeanInspector get(Class<T> type) {
+        BeanInspector inspector = inspectors.get(type.getName()) ;
+        if(inspector == null) {
+            inspector = new BeanInspector<T>(type) ;
+            inspectors.put(type.getName(), inspector) ;
+        }
+        return inspector ;
+    }
 
     private void addDeclaredFields(Class<?> type) {
         for(Field sel : type.getDeclaredFields()) {
