@@ -64,7 +64,7 @@ spring:
 logging:
   config: classpath:logback-console.xml
 
-# Hibernate And DB  Configuration #######################
+# Hibernate And db  Configuration #######################
 
 hibernate:
   jdbc:
