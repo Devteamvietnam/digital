@@ -9,6 +9,26 @@ group = 'com.devteam'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+project.ext {
+    slf4jVersion             = '1.7.30'
+    log4jVersion             = '2.14.1'
+
+    jacksonVersion           = '2.12.3'
+    springfoxVersion           = '3.0.0'
+
+    springFrameworkVersion   = '5.3.7'
+    springSecurityVersion    = '5.3.3.RELEASE'
+    springIntegrationVersion = '5.5.0'
+    springDataVersion        = '2.5.1'
+    springDataJpaVersion     = '2.5.1'
+    springBatchVersion       = '4.3.3'
+
+    hibernateVersion          = '5.4.18.Final'
+    hibernateValidatorVersion = '5.4.3.Final'
+
+    jettyVersion             = "9.4.30.v20200611"
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -25,10 +45,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     /***************** Flywaydb *****************/
     implementation 'org.flywaydb:flyway-core'
     /**************** lombok ******************/
@@ -39,6 +57,31 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'org.postgresql:postgresql'
     implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
+    /*********************Cache********************/
+    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
+    implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+    implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.4'
+    implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+    implementation group: 'com.sun.istack', name: 'istack-commons-runtime', version: '4.0.1'
+
+    /*************************jetty web server runtime  ***************************/
+    implementation group: "org.eclipse.jetty", name: "jetty-servlet", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-servlets", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-continuation", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-http", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-util", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-io", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-server", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-webapp", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-security", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-client", version: jettyVersion
+
+    implementation group: "org.eclipse.jetty.websocket", name: "websocket-common", version: jettyVersion
+    implementation group: "org.eclipse.jetty.websocket", name: "websocket-api", version: jettyVersion
+    implementation group: "org.eclipse.jetty.websocket", name: "websocket-servlet", version: jettyVersion
+    implementation group: "org.eclipse.jetty.websocket", name: "websocket-client", version: jettyVersion
+    implementation group: "org.eclipse.jetty.websocket", name: "websocket-server", version: jettyVersion
+
     /********************* Test Implement *****************/
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
