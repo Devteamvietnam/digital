@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Configuration;
                 SecurityAutoConfiguration.class
         }
 )
-public class DigitalApplication {
+public class ServerApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(DigitalApplication.class, args);
+        SpringApplication.run(ServerApp.class, args);
     }
 
 }
