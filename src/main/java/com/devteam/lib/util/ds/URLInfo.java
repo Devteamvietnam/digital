@@ -1,5 +1,7 @@
 package com.devteam.lib.util.ds;
 
+import com.devteam.lib.util.cipher.MD5;
+import com.devteam.lib.util.text.StringUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.*;
