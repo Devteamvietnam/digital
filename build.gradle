@@ -61,6 +61,9 @@ allprojects {
 
     dependencies {
 
+        /***********Other package***********/
+        implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+
         /********************LOMBOK******************/
         implementation 'org.projectlombok:lombok:1.18.16'
         annotationProcessor 'org.projectlombok:lombok:1.18.16'
