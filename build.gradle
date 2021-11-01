@@ -38,6 +38,7 @@ dependencies {
     runtimeOnly 'mysql:mysql-connector-java'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'org.postgresql:postgresql'
+    implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
     /********************* Test Implement *****************/
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
