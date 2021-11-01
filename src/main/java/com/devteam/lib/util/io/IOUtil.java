@@ -2,14 +2,19 @@ package com.devteam.lib.util.io;
 
 import com.devteam.lib.util.error.ErrorType;
 import com.devteam.lib.util.error.RuntimeError;
+import io.micrometer.core.lang.Nullable;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
 public class IOUtil {
+    private static final int EOF = -1;
+
+    private static final int DEFAULT_BUFFER_SIZE = 1024;
 
     static public URL getResource(String res) throws IOException {
         if (res.startsWith("file:")) {
@@ -234,5 +239,21 @@ public class IOUtil {
         byte[] output = outputStream.toByteArray();
         return output;
     }
+    public static String toString(@Nullable InputStream inputStream, Charset charset) {
+        if (inputStream == null)
+            return "";
 
+        try (StringWriter writer = new StringWriter();
+             InputStreamReader reader = new InputStreamReader(inputStream, charset);
+             BufferedReader bufferedReader = new BufferedReader(reader)) {
+            char[] chars = new char[DEFAULT_BUFFER_SIZE];
+            int readChars;
+            while ((readChars = bufferedReader.read(chars)) != EOF) {
+                writer.write(chars, 0, readChars);
+            }
+            return writer.toString();
+        } catch (IOException ex) {
+            throw new UncheckedIOException(ex);
+        }
+    }
 }
