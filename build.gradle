@@ -149,6 +149,10 @@ allprojects {
     }
     test {
         useJUnitPlatform()
+
+        filter {
+            includeTestsMatching "*UnitTest"
+        }
     }
 }
 
