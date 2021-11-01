@@ -4,6 +4,9 @@
 ![Snake animation](github-user-contribution.svg)
 </h3>
 
+[![Java CI with Gradle](https://github.com/ddthien-coder/digital/actions/workflows/gradle.yml/badge.svg)](https://github.com/ddthien-coder/digital/actions/workflows/gradle.yml)
+[![Gradle Package](https://github.com/ddthien-coder/digital/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/ddthien-coder/digital/actions/workflows/gradle-publish.yml)
+
 ![](https://img.shields.io/badge/Language-Java-informational?style=flat&logo=solidity&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Framework-springboot-informational?style=flat&logo=springboot&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Framework-gradle-informational?style=flat&logo=gradle&logoColor=white&color=3bac3a)
