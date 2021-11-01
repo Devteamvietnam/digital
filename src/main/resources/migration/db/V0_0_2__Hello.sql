@@ -1,1 +1,0 @@
-select * from digital_account_account;
