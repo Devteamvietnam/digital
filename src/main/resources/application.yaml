@@ -133,8 +133,8 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     jdbcUrl: jdbc:postgresql://localhost:5432/digitaldb
-    username: vion
-    password: vion
+    username: devteam
+    password: devteam
   jpa:
     database-platform:  org.hibernate.dialect.PostgreSQLDialect
 
