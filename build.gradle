@@ -60,6 +60,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+
     /************** Srping Security*****************/
     implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
     implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion

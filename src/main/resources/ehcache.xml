@@ -12,7 +12,7 @@
     </jsr107:defaults>
   </service>
 
-  <persistence directory="${app.home}/tmp/ehcache"/>
+  <persistence directory="/tmp/ehcache"/>
 
   <cache-template name="default">
     <resources>

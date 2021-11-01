@@ -1,5 +1,6 @@
 package com.devteam;
 
+import com.devteam.core.data.cache.CachingConfig;
 import com.devteam.core.filter.FilterConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +19,8 @@ import org.springframework.context.annotation.Import;
         }
 )
 @Import(value = {
-        WebSecurityConfig.class, WebResourceConfig.class, FilterConfig.class
+        WebSecurityConfig.class, WebResourceConfig.class, FilterConfig.class,
+        CachingConfig.class
 })
 public class ServerApp {
     static ConfigurableApplicationContext context;
