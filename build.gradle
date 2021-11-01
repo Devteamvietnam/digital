@@ -187,13 +187,12 @@ dependencies {
     implementation group: 'javax.mail', name: 'mail', version: '1.4'
     implementation group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
 
-
 }
 
 test {
     useJUnitPlatform()
-//
-//    filter {
-//        includeTestsMatching "*UnitTest"
-//    }
+
+    filter {
+        includeTestsMatching "*UnitTest"
+    }
 }
