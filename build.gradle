@@ -63,6 +63,7 @@ allprojects {
 
         /***********Other package***********/
         implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
+        implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 
         /********************LOMBOK******************/
         implementation 'org.projectlombok:lombok:1.18.16'
