@@ -20,4 +20,7 @@ public class ExceptionUtil {
         }
         return result;
     }
+    public static String getMessage(Throwable th) {
+        return null;
+    }
 }
