@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JVMInfo {
-    
+
     private String                          startTime;
     private String                          upTime;
 
