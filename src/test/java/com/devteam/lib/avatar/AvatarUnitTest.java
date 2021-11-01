@@ -17,5 +17,7 @@ public class AvatarUnitTest {
             BufferedImage img = AvatarUtil.create(150, 150, name);
             ImageIO.write(img, "png", new File("build/" + name  + ".png"));
         }
+        System.out.println(DataSerializer.JSON.toString(names));
+
     }
 }
