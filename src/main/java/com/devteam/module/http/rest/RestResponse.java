@@ -1,4 +1,4 @@
-package com.devteam.module.http.rest.v1;
+package com.devteam.module.http.rest;
 
 import com.devteam.lib.util.dataformat.DataSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
