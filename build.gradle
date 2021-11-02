@@ -61,6 +61,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
+    implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
+    implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.10'
 
     /************** Srping Security*****************/
     implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion

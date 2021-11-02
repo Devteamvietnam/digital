@@ -11,9 +11,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.type.Type;
 
 import javax.persistence.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,23 +24,18 @@ import java.util.List;
 )
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
+@Getter @Setter
 public class EntityActivity extends BaseEntity<Long> {
     private static final long  serialVersionUID = 1L;
     public static final String TABLE_NAME = "dev_core_activity_entity";
-    @Getter @Setter
     private String       name;
     @Column(name="entity_table")
-    @Getter @Setter
     private String       entityTable;
-    @Getter @Setter
     @Column(name="entity_id")
     private Long         entityId;
     @Column(name="entity_label")
-    @Getter @Setter
     private String       entityLabel;
-    @Getter @Setter
     private ChangeAction action = null;
-    @Getter @Setter
     @Column(name = "transaction_activity_id", insertable=false, updatable=false)
     private Long transactionActivityId;
 
