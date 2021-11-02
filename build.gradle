@@ -59,12 +59,19 @@ dependencies {
     implementation group: "org.springframework", name: "spring-aop", version: springFrameworkVersion
     implementation group: "org.springframework", name: "spring-expression", version: springFrameworkVersion
 
-    /************** Srping Security*****************/
+    /************** Srping web runtime*****************/
     implementation group: "org.springframework.web", name: "spring-web-core", version: springSecurityVersion
     implementation group: "org.springframework.web", name: "spring-web-config", version: springSecurityVersion
     implementation group: "org.springframework.web", name: "spring-web-web", version: springSecurityVersion
     implementation group: "org.springframework.web", name: "spring-web-crypto", version: springSecurityVersion
     implementation group: "org.springframework.web", name: "spring-web-rsa", version: "1.0.1.RELEASE"
+
+    /****************Spring Security***********/
+    implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-crypto", version: springSecurityVersion
+    implementation group: "org.springframework.security", name: "spring-security-rsa", version: "1.0.1.RELEASE"
 
     /*************************jetty web server runtime  ***************************/
     implementation group: "org.eclipse.jetty", name: "jetty-servlet", version: jettyVersion
