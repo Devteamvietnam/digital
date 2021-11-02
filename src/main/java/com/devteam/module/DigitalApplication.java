@@ -1,6 +1,6 @@
 package com.devteam.module;
 
-import com.devteam.module.filter.FilterConfig;
+import com.devteam.module.util.filter.FilterConfig;
 import com.devteam.module.security.WebResourceConfig;
 import com.devteam.module.security.WebSecurityConfig;
 import org.springframework.boot.SpringApplication;

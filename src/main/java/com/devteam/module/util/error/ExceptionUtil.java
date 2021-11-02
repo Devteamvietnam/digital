@@ -1,4 +1,4 @@
-package com.devteam.module.error;
+package com.devteam.module.util.error;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

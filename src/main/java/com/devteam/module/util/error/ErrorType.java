@@ -1,4 +1,4 @@
-package com.devteam.module.error;
+package com.devteam.module.util.error;
 
 public enum ErrorType {
     IllegalArgument,IllegalState, ConstraintViolation, EntityModified, EntityNotFound,

@@ -1,6 +1,6 @@
 package com.devteam.module.util.html;
 
-import com.devteam.module.error.ExceptionUtil;
+import com.devteam.module.util.error.ExceptionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

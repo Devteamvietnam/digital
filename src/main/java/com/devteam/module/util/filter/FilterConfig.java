@@ -1,4 +1,4 @@
-package com.devteam.module.filter;
+package com.devteam.module.util.filter;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;

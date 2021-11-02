@@ -1,4 +1,4 @@
-package com.devteam.module.filter;
+package com.devteam.module.util.filter;
 
 import com.devteam.module.util.StringUtil;
 import org.springframework.http.MediaType;

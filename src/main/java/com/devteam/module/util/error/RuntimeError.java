@@ -1,4 +1,4 @@
-package com.devteam.module.error;
+package com.devteam.module.util.error;
 
 public class RuntimeError extends RuntimeException {
     private static final long serialVersionUID = 1L;
