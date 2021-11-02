@@ -1,4 +1,4 @@
-package com.devteam.core.data;
+package com.devteam.core.data.db;
 
 import com.devteam.core.data.db.SqlSelectView;
 import com.devteam.core.data.db.query.SqlQuery;

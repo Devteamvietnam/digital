@@ -1,7 +1,7 @@
 package com.devteam.core.data.db.activity;
 
 import com.devteam.core.annotation.LogTransactionActivity;
-import com.devteam.core.data.DAOService;
+import com.devteam.core.data.db.DAOService;
 import com.devteam.core.data.db.DataThreadContext;
 import com.devteam.core.data.db.SqlMapRecord;
 import com.devteam.core.data.db.activity.entity.EntityActivity;
