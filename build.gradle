@@ -45,7 +45,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
@@ -60,11 +60,11 @@ dependencies {
     implementation group: "org.springframework", name: "spring-expression", version: springFrameworkVersion
 
     /************** Srping Security*****************/
-    implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-crypto", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-rsa", version: "1.0.1.RELEASE"
+    implementation group: "org.springframework.web", name: "spring-web-core", version: springSecurityVersion
+    implementation group: "org.springframework.web", name: "spring-web-config", version: springSecurityVersion
+    implementation group: "org.springframework.web", name: "spring-web-web", version: springSecurityVersion
+    implementation group: "org.springframework.web", name: "spring-web-crypto", version: springSecurityVersion
+    implementation group: "org.springframework.web", name: "spring-web-rsa", version: "1.0.1.RELEASE"
 
     /*************************jetty web server runtime  ***************************/
     implementation group: "org.eclipse.jetty", name: "jetty-servlet", version: jettyVersion
@@ -75,7 +75,7 @@ dependencies {
     implementation group: "org.eclipse.jetty", name: "jetty-io", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-server", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-webapp", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-security", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-web", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-client", version: jettyVersion
 
     implementation group: "org.eclipse.jetty.websocket", name: "websocket-common", version: jettyVersion

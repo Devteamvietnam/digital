@@ -1,4 +1,4 @@
-package com.devteam.module.security;
+package com.devteam.module.web;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 import org.springframework.context.annotation.Bean;
