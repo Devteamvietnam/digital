@@ -27,7 +27,7 @@ public class ServerApp {
     static ConfigurableApplicationContext context;
 
     static public ApplicationContext run(String[] args, long wait) throws Exception {
-        System.out.println("(♥◠‿◠)ﾉﾞ  Stating Project Success ლ(´ڡ`ლ)ﾞ  \n");
+        System.out.println(" DEVTEAM SERVER START  \n");
         context = SpringApplication.run(ServerApp.class, args);
         isRunning(wait);
         return context;
