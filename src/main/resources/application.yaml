@@ -46,7 +46,7 @@ spring:
       idleTimeout: 600000
       maxLifetime: 1800000
     #jdbcUrl: jdbc:h2:mem:testdb
-    #jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digitaldb
+    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digitaldb
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
     username: sa
@@ -86,8 +86,8 @@ spring:
     activate:
       on-profile: h2
   datasource:
-    url: jdbc:h2:mem:testdb
-    #jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digital
+    #url: jdbc:h2:mem:testdb
+    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digital
     driverClassName: org.h2.Driver
     username: sa
     password:

@@ -1,4 +1,4 @@
-package com.devteam.core.data;
+package com.devteam.core.data.db;
 
 import lombok.Getter;
 import lombok.Setter;
