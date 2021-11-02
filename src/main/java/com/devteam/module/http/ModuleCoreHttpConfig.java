@@ -8,8 +8,11 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @ComponentScan(basePackages = {
+        "com.devteam.module.http.get",
+        "com.devteam.module.http.rest",
+        "com.devteam.module.http.upload",
         "com.devteam.module.http"
-}
+    }
 )
 @Import(value = {
         ModuleSpringFrameworkConfig.class
