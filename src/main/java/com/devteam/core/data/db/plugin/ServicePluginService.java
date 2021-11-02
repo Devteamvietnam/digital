@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public class ServicePluginService {
     @Autowired
     private PluginInfoRepository repo;
