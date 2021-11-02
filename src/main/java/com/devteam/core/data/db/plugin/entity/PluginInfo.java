@@ -1,4 +1,4 @@
-package com.devteam.core.data.db.plugin;
+package com.devteam.core.data.db.plugin.entity;
 
 import com.devteam.core.data.db.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
