@@ -1,1 +1,0 @@
-select * from dev_account_account;

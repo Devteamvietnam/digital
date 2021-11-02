@@ -7,5 +7,5 @@
   </root>
   <logger name="org.hibernate" level="DEBUG"/>
   <logger name="org.springframework" level="DEBUG"/>
-  <logger name="com.devteam" level="DEBUG"/>
+  <logger name="com.devteam.module" level="DEBUG"/>
 </configuration>
