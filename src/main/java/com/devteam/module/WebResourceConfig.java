@@ -29,7 +29,7 @@ public class WebResourceConfig extends WebMvcConfigurationSupport {
                 ignoredParameterTypes(HttpServletRequest.class, HttpSession.class).
                 select().
                 apis(RequestHandlerSelectors.withClassAnnotation(RestController.class)).
-                paths(regex("/(rest/dev/v1.0.0|storage|get)/.*")).
+                paths(regex("/(rest/devteam/v1.0.0|storage|get)/.*")).
                 build().
                 apiInfo(metaData());
     }
