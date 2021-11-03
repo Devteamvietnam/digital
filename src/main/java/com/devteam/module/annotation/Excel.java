@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 /**
  * @author ddthien
- * vion version: 1.0
+ * devteam version: 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
