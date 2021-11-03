@@ -1,7 +1,7 @@
 package com.devteam.module.util;
 
-import com.devteam.module.util.error.ErrorType;
-import com.devteam.module.util.error.RuntimeError;
+import com.devteam.module.error.ErrorType;
+import com.devteam.module.error.RuntimeError;
 import io.micrometer.core.lang.Nullable;
 
 import java.io.*;

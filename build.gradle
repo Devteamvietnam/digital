@@ -37,10 +37,7 @@ project.ext {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
-    maven { url "https://repo.spring.io/plugins-release" }
-    maven { url "https://repo.spring.io/milestone" }
 }
 
 dependencies {
@@ -48,10 +45,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-    implementation 'org.springframework.boot:spring-boot-starter-cache'
 
     /*****************Spring Framework*********/
     implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
@@ -63,7 +59,7 @@ dependencies {
     implementation group: "org.springframework", name: "spring-aop", version: springFrameworkVersion
     implementation group: "org.springframework", name: "spring-expression", version: springFrameworkVersion
 
-    /****************Spring Security***********/
+    /************** Srping Security*****************/
     implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
     implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
     implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
@@ -79,6 +75,7 @@ dependencies {
     implementation group: "org.eclipse.jetty", name: "jetty-io", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-server", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-webapp", version: jettyVersion
+    implementation group: "org.eclipse.jetty", name: "jetty-security", version: jettyVersion
     implementation group: "org.eclipse.jetty", name: "jetty-client", version: jettyVersion
 
     implementation group: "org.eclipse.jetty.websocket", name: "websocket-common", version: jettyVersion
@@ -165,14 +162,6 @@ dependencies {
     implementation group: 'javax.batch', name: 'javax.batch-api', version: '1.0.1'
     implementation group: 'javax.mail', name: 'mail', version: '1.4'
     implementation group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
-
-    //cache
-    implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
-    implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
-    implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.4'
-    implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
-    implementation group: 'com.sun.istack', name: 'istack-commons-runtime', version: '4.0.1'
-
 
     implementation 'org.flywaydb:flyway-core'
     compileOnly 'org.projectlombok:lombok'
