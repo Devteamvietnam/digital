@@ -1,8 +1,5 @@
 package com.devteam.module;
 
-import com.devteam.module.util.filter.FilterConfig;
-import com.devteam.module.web.WebResourceConfig;
-import com.devteam.module.web.WebSecurityConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -19,9 +16,6 @@ import org.springframework.context.annotation.Import;
                 SecurityAutoConfiguration.class
         }
 )
-@Import(value = {
-        WebSecurityConfig.class, WebResourceConfig.class, FilterConfig.class,
-})
 public class DigitalApplication {
 
     static ConfigurableApplicationContext context;
