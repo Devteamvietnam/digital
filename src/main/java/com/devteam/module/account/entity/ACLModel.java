@@ -1,6 +1,6 @@
-package com.devteam.module.security.entity;
+package com.devteam.module.account.entity;
 
-import com.devteam.module.account.entity.AccountAclModel;
+import com.devteam.module.security.entity.AccessToken;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor @Getter @Setter
 public class ACLModel {
     private String                sessionId;
-    private AccessToken           accessToken;
+    private AccessToken accessToken;
     private AccountAclModel accountAcl;
     private List<AccountAclModel> availableAccountAcls;
 
