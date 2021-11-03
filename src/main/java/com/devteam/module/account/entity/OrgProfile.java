@@ -20,7 +20,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class OrgProfile extends BaseProfile {
-  public static final String TABLE_NAME = "vion_account_org_profile";
+  public static final String TABLE_NAME = "devteam_account_org_profile";
 
   @Transient
   private final AccountType accountType = AccountType.ORGANIZATION;

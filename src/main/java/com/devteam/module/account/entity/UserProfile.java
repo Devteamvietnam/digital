@@ -20,7 +20,7 @@ import java.util.Date;
 @JsonInclude(Include.NON_NULL)
 @Getter @Setter
 public class UserProfile extends BaseProfile {
-  public static final String TABLE_NAME = "vion_account_user_profile";
+  public static final String TABLE_NAME = "devteam_account_user_profile";
 
   @Transient
   final private AccountType  accountType = AccountType.USER;
