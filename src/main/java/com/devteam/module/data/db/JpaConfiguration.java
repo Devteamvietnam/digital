@@ -72,7 +72,7 @@ public class JpaConfiguration {
   @Bean("transactionManager")
   public PlatformTransactionManager transactionManager(
       @Qualifier("entityManagerFactory") LocalContainerEntityManagerFactoryBean factory) {
-    System.out.println("\n\ndevteam CREATE CUSTOM TRANSACTION MANAGER\n\n");
+    System.out.println("\n\n CREATE CUSTOM TRANSACTION MANAGER\n\n");
     JpaTransactionManager transactionManager = new JpaTransactionManager();
     transactionManager.setEntityManagerFactory(factory.getObject());
     return transactionManager;
