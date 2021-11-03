@@ -1,6 +1,6 @@
 package com.devteam.module.account.plugin;
 
-import com.devteam.module.account.data.sample.DBModuleScenario;
+import com.devteam.module.account.sample.db.DBModuleScenario;
 import com.devteam.module.account.entity.Account;
 import com.devteam.module.account.entity.AccountType;
 import com.devteam.module.account.logic.AccountLogic;
