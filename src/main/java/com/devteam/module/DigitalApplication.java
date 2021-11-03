@@ -10,13 +10,19 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableConfigurationProperties
 @ComponentScan(
         basePackages = {
-                "com.devteam",
-                "com.devteam.module.http"
+                "com.devteam.module.server",
+                "com.devteam.module.account",
+                "com.devteam.module.http",
+                "com.devteam.module.data",
+                "com.devteam.module.security",
+                "com.devteam.module.app",
+                "com.devteam.module.storage",
         }
 )
 @SpringBootApplication(
