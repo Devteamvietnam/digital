@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests().antMatchers("/", "/swagger-ui").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/", "/h2-console").permitAll();
         httpSecurity.headers().frameOptions().disable();
         httpSecurity.csrf().disable();
     }
