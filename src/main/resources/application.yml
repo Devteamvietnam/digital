@@ -136,9 +136,9 @@ spring:
   datasource:
     driverClassName: org.postgresql.Driver
     #jdbcUrl: jdbc:postgresql://localhost:5432/digitaldb
-    jdbcUrl: jdbc:postgresql://localhost:5432/digitaldb
-    username: devteam
-    password: devteam
+    jdbcUrl: jdbc:postgresql://ec2-52-22-81-147.compute-1.amazonaws.com:5432/dj1frnd73ipek
+    username: cteclbhnjodenn
+    password: b97b6fec5f188a3ba7abbf7586edafb69544354d1655e7e5ca6375bdd11f2416
   jpa:
     database-platform:  org.hibernate.dialect.PostgreSQLDialect
 
