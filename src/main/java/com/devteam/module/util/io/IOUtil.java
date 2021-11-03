@@ -1,4 +1,4 @@
-package com.devteam.module.util;
+package com.devteam.module.util.io;
 
 import com.devteam.module.util.error.ErrorType;
 import com.devteam.module.util.error.RuntimeError;
