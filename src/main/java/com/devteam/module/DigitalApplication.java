@@ -8,10 +8,17 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties
+@ComponentScan(
+        basePackages = {
+                "com.devteam",
+                "com.devteam.module.http"
+        }
+)
 @SpringBootApplication(
         exclude = {
                 SecurityAutoConfiguration.class
