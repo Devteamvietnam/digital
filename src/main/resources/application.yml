@@ -24,7 +24,7 @@ server:
 
 spring:
   main:
-    banner-mode: off
+    banner-mode: console
     allow-bean-definition-overriding: false
   output:
     ansi:
@@ -82,12 +82,12 @@ hibernate:
 
 ---
 spring:
-  config:
-    activate:
-      on-profile: h2
+#  config:
+#    activate:
+#      on-profile: h2
   datasource:
     #jdbcUrl: jdbc:h2:mem:testdb
-    jdbcUrl: jdbc:h2:file:./data/db/h2/digital
+    jdbcUrl: jdbc:h2:file:./data/db/h2/digitaldb
     #url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
     username: sa
@@ -118,7 +118,7 @@ spring:
     activate:
       on-profile: hsql
   datasource:
-    url: jdbc:hsqldb:mem:digital
+    jdbcUrl: jdbc:hsqldb:mem:digital
     driverClassName: org.hsqldb.jdbcDriver
     username: sa
     password:
@@ -141,6 +141,8 @@ spring:
     password: b97b6fec5f188a3ba7abbf7586edafb69544354d1655e7e5ca6375bdd11f2416
   jpa:
     database-platform:  org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
 
 hibernate:
   dialect: org.hibernate.dialect.PostgreSQLDialect
