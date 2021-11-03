@@ -1,6 +1,7 @@
-package com.devteam.module.security.entity;
+package com.devteam.module.account.entity;
 
 import com.devteam.module.enums.AccessType;
+import com.devteam.module.security.entity.AppAccessPermission;
 import lombok.Getter;
 import lombok.Setter;
 

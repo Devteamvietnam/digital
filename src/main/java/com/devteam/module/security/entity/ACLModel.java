@@ -1,5 +1,6 @@
 package com.devteam.module.security.entity;
 
+import com.devteam.module.account.entity.AccountAclModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 public class ACLModel {
     private String                sessionId;
     private AccessToken           accessToken;
-    private AccountAclModel       accountAcl;
+    private AccountAclModel accountAcl;
     private List<AccountAclModel> availableAccountAcls;
 
     public ACLModel(AccessToken accessToken) {
