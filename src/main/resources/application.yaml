@@ -40,6 +40,11 @@ spring:
         use_sql_comments: 'true'
         show_sql: 'true'
     show-sql: 'true'
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    url: jdbc:mysql://localhost:3306/mydatabase
+#    password: '12345'
   servlet:
     multipart:
       enabled: 'true'
