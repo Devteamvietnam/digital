@@ -4,6 +4,9 @@
 ![Snake animation](github-user-contribution.svg)
 </h3>
 
+[![Java CI with Gradle](https://github.com/ddthien-coder/digital/actions/workflows/gradle.yml/badge.svg)](https://github.com/ddthien-coder/digital/actions/workflows/gradle.yml)
+[![Gradle Package](https://github.com/ddthien-coder/digital/actions/workflows/gradle-publish.yml/badge.svg)](https://github.com/ddthien-coder/digital/actions/workflows/gradle-publish.yml)
+
 ![](https://img.shields.io/badge/Language-Java-informational?style=flat&logo=solidity&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Framework-springboot-informational?style=flat&logo=springboot&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Framework-gradle-informational?style=flat&logo=gradle&logoColor=white&color=3bac3a)
@@ -21,3 +24,10 @@
 ![](https://img.shields.io/badge/Shell-Bash-informational?style=flat&logo=gnu-bash&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Tools-Docker-informational?style=flat&logo=docker&logoColor=white&color=3bac3a)
 ![](https://img.shields.io/badge/Cloud-AWS-informational?style=flat&logo=Amazon&logoColor=white&color=3bac3a)
+
+### Additional Links
+
+These additional references should also help you:
+
+* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+

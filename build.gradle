@@ -1,172 +1,50 @@
-import org.gradle.plugins.ide.eclipse.model.SourceFolder
-
-allprojects {
+plugins {
+    id 'org.springframework.boot' version '2.5.6'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'eclipse'
+    id 'maven-publish'
 }
 
-subprojects {
-  apply plugin: 'java'
-  apply plugin: 'java-library'
-  apply plugin: 'eclipse'
+group = 'com.devteam'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '14'
 
-  project.ext {
-    slf4jVersion             = '1.7.30'
-    log4jVersion             = '2.14.1'
-
-    jacksonVersion           = '2.12.3'
-    springfoxVersion           = '3.0.0'
-
-    springBootVersion        = '2.5.0'
-    springFrameworkVersion   = '5.3.7'
-    springSecurityVersion    = '5.3.3.RELEASE'
-    springIntegrationVersion = '5.5.0'
-    springDataVersion        = '2.5.1'
-    springDataJpaVersion     = '2.5.1'
-    springBatchVersion       = '4.3.3'
-
-    hibernateVersion          = '5.4.18.Final'
-    hibernateValidatorVersion = '5.4.3.Final'
-
-    jettyVersion             = "9.4.30.v20200611"
-
-    releaseDir               = "${buildDir}/release"
-  }
-
-  eclipse {
-    classpath {
-      downloadSources=true
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
     }
+}
 
-    project {
-    }
-  }
+project.ext {
 
-  eclipse.classpath.defaultOutputDir = file( 'build/classes' )
+}
 
-  eclipse.classpath.file {
-    beforeMerged { classpath ->
-      classpath.entries.clear()
-    }
-    whenMerged {  cp ->
-      cp.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/") }*.output = "build/bin/main"
-        cp.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/test/") }*.output = "build/bin/test"
-        cp.entries.removeAll { it.kind == "output" }
-    }
-  }
-
-  group = 'com.devteam'
-  version = '1.0'
-  sourceCompatibility = 14
-  compileJava.options.encoding = 'UTF-8'
-
-  configurations {
-    compile {
-      transitive = true
-    }
-  }
-
-  repositories {
+repositories {
     mavenLocal()
     mavenCentral()
-    maven { url "https://repo.spring.io/plugins-release" }
-    maven { url "https://repo.spring.io/milestone" }
-  }
+}
 
-  task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-  }
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jersey'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.flywaydb:flyway-core'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'mysql:mysql-connector-java'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    runtimeOnly 'org.postgresql:postgresql'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
-  artifacts {
-    archives sourcesJar
-  }
+    //other package
+    implementation 'org.json:json:20210307'
+}
 
-  dependencies {
-    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
-    implementation "org.slf4j:slf4j-ext:${slf4jVersion}"
-
-    implementation 'org.projectlombok:lombok:1.18.16'
-    annotationProcessor 'org.projectlombok:lombok:1.18.16'
-
-    api group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
-    api group: 'junit', name: 'junit', version: '4.12'
-
-    testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
-    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
-  }
-
-  test {
-    forkEvery = 1
-    ignoreFailures = true
-    testLogging.showStandardStreams = true
-
-    filter {
-      includeTestsMatching "*UnitTest"
-    }
-
-    testLogging {
-      events "passed", "skipped", "failed"
-    }
-  }
-
-  task itest(type: Test) {
-    description = 'Runs integration tests.'
-
-
-    testLogging {
-      events "passed", "skipped", "failed"
-    }
-
-    useJUnitPlatform {
-      includeTags('integration')
-    }
-
-  }
-
-  task utest(type: Test) {
-    ignoreFailures = true
-    description = 'Runs Unit tests.'
-
-    testLogging {
-      events "passed", "skipped", "failed"
-    }
-
-    useJUnitPlatform {
-      includeTags('unit')
-    }
-
-  }
-
-  task tofix(type: Test) {
-    description = 'Runs tofix tests.'
-
-    testLogging.showStandardStreams = true
-
-    testLogging {
-      events "passed", "skipped", "failed"
-    }
-
-    useJUnitPlatform {
-      includeTags('tofix')
-    }
-
-  }
-
-  task testJar(type: Jar) {
-    classifier = 'tests'
-    from sourceSets.test.output
-  }
-
-  configurations {
-    tests
-    published.extendsFrom tests, archives
-  }
-
-  artifacts {
-    tests testJar
-  }
-
-  sourceSets {
-    main {
-    }
-  }
+test {
+    useJUnitPlatform()
 }
