@@ -132,7 +132,7 @@ public class AccountController extends BaseController {
     return execute(Method.PUT, "account", executor);
   }
 
-  @ApiOperation(value = "Persist the account", response = Account.class)
+  @ApiOperation(value = "Save the account", response = Account.class)
   @PutMapping("account")
   public @ResponseBody RestResponse saveAccount(HttpSession session, @RequestBody Account account) {
     Callable<Account> executor = () -> {

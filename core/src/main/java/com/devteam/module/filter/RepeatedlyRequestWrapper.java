@@ -1,6 +1,6 @@
 package com.devteam.module.filter;
 
-import com.devteam.util.http.HttpHelper;
+import com.devteam.util.html.HttpHelper;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
