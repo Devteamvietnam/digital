@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.devteam.module.security.ModuleCoreSecurityConfig;
 import com.devteam.module.data.db.JpaConfiguration;
 import com.devteam.module.http.ModuleCoreHttpConfig;
-import com.devteam.module.settings.ModuleSettingsConfig;
 import com.devteam.module.storage.ModuleStorageConfig;
 
 
@@ -28,8 +27,7 @@ import com.devteam.module.storage.ModuleStorageConfig;
 @EnableTransactionManagement
 @Import(value = {
   JpaConfiguration.class, ModuleCoreHttpConfig.class,
-  ModuleSettingsConfig.class, ModuleStorageConfig.class,
-  ModuleCoreSecurityConfig.class
+  ModuleStorageConfig.class, ModuleCoreSecurityConfig.class
 })
 public class ModuleAccountConfig {
 

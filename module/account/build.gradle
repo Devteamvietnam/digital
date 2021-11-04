@@ -9,7 +9,6 @@ eclipse {
 dependencies {
   api project(':digital-module-common')
   api project(':digital-core')
-  api project(':digital-module-settings')
   api project(':digital-module-storage')
 }
 

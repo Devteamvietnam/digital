@@ -47,8 +47,8 @@ public class WebResourceConfig extends WebMvcConfigurationSupport {
         description("DEV TEAM REST API").
         version("1.0.0").
         license("DEV TEAM License").
-        licenseUrl("http://devteam.com").
-        contact(new Contact("Dev Team", "http://devteam.com", "devteam@devteam.com")).
+        licenseUrl("www.dev-demo.website").
+        contact(new Contact("Dev Team", "www.dev-demo.website", "devteamvietnam@gmail.com")).
         build();
   }
 

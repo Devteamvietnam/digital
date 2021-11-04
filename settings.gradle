@@ -16,9 +16,6 @@ project(':digital-module-springframework').projectDir = new File('module/springf
 include 'digital-module-common'
 project(':digital-module-common').projectDir = new File('module/common')
 
-include 'digital-module-settings'
-project(':digital-module-settings').projectDir = new File('module/settings')
-
 include 'digital-module-account'
 project(':digital-module-account').projectDir = new File('module/account')
 

@@ -1,21 +1,15 @@
 package com.devteam.module.account.logic;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import com.devteam.module.account.entity.Account;
-import com.devteam.module.account.entity.AccountContact;
 import com.devteam.module.account.entity.AccountType;
 import com.devteam.module.account.entity.BaseProfile;
 import com.devteam.module.account.entity.OrgProfile;
 import com.devteam.module.account.entity.UserProfile;
-import com.devteam.module.account.repository.AccountContactRepository;
 import com.devteam.module.account.repository.OrgProfileRepository;
 import com.devteam.module.account.repository.UserProfileRepository;
 import com.devteam.module.common.ClientInfo;
@@ -43,9 +37,6 @@ public class ProfileLogic extends DAOService {
 
   @Autowired
   private OrgProfileRepository orgProfileRepo;
-
-  @Autowired
-  private AccountContactRepository contactRepo;
 
   @Autowired
   private UploadService uploadService;
@@ -122,31 +113,5 @@ public class ProfileLogic extends DAOService {
       saveOrgProfile(client, profile);
     }
     return resource;
-  }
-
-  public List<AccountContact> findContactByLoginId(ClientInfo clientInfo, String loginId) {
-    return contactRepo.findByLoginId(loginId);
-  }
-
-  public List<AccountContact> saveContacts(ClientInfo clientInfo, String loginId, List<AccountContact> contactList) {
-    Set<Long> validIdSet = new HashSet<Long>();
-    for(AccountContact contact : contactList) {
-      saveContact(clientInfo, loginId, contact);
-      validIdSet.add(contact.getId());
-    }
-    contactRepo.deleteOrphan(loginId, validIdSet);
-    return contactList;
-  }
-
-  public AccountContact saveContact(ClientInfo clientInfo, String loginId, AccountContact contact) {
-    contact.setLoginId(loginId);
-    contact.set(clientInfo);
-    contact = contactRepo.save(contact);
-    return contact;
-  }
-
-  public boolean deleteContacts(ClientInfo clientInfo, String loginId, List<Long> contactIds) {
-    contactRepo.delete(loginId, contactIds);
-    return true;
   }
 }

@@ -46,6 +46,7 @@ spring:
       idleTimeout: 600000
       maxLifetime: 1800000
     #jdbcUrl: jdbc:h2:mem:testdb
+    // connect to h2 jdbc:h2:./data/db/h2/devdb
     jdbcUrl: jdbc:h2:${app.home}/data/db/h2/devdb
     driverClassName: org.h2.Driver
     username: sa

@@ -31,8 +31,6 @@ dependencies {
   api project(":digital-core")
   api project(":digital-module-common")
   api project(":digital-module-account")
-  api project(":digital-module-settings")
-
 
   implementation group: "com.h2database", name: "h2", version: '1.4.200'
 
@@ -210,7 +208,6 @@ dependencies {
   serverAppJars project(':digital-app-core')
   serverAppJars project(':digital-module-common')
   serverAppJars project(':digital-module-springframework')
-  serverAppJars project(':digital-module-settings')
   serverAppJars project(':digital-module-storage')
   serverAppJars project(':digital-module-account')
 

@@ -28,7 +28,7 @@ import lombok.Setter;
 )
 @NoArgsConstructor @Getter @Setter
 public class AccountGroup extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "dev_account_group";
+  public static final String TABLE_NAME = "account_group";
 
   @NotNull
   private String            name;

@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 public class AccountMembership extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "dev_account_membership";
+  public static final String TABLE_NAME = "account_membership";
 
   public static enum Status { ACTIVE, INACTIVE, SUSPENDED }
 

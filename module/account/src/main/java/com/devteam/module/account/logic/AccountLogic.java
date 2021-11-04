@@ -22,7 +22,6 @@ import com.devteam.module.account.entity.AccountType;
 import com.devteam.module.account.entity.OrgProfile;
 import com.devteam.module.account.entity.UserProfile;
 import com.devteam.module.account.plugin.AccountServicePlugin;
-import com.devteam.module.account.repository.AccountContactRepository;
 import com.devteam.module.account.repository.AccountGroupRepository;
 import com.devteam.module.account.repository.AccountMembershipRepository;
 import com.devteam.module.account.repository.AccountRepository;
@@ -64,8 +63,6 @@ public class AccountLogic extends DAOService {
   @Autowired
   private AccountGroupRepository      accountGroupRepo;
 
-  @Autowired
-  private AccountContactRepository    contactRepo;
 
   @Autowired
   private IStorageService storageService;
@@ -286,7 +283,6 @@ public class AccountLogic extends DAOService {
     plugins.forEach(plugin -> {
       plugin.onPreStateChange(client, account, state);
     });
-    contactRepo.setStorageState(LOGIN_ID, state);
     membershipRepo.setStorageState(LOGIN_ID, state);
 
     if(account.getAccountType() == AccountType.USER) {

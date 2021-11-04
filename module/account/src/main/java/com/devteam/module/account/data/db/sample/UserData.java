@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.devteam.module.account.service.AccountService;
 import com.devteam.module.account.model.NewAccountModel;
-import com.devteam.module.account.entity.AccountContact;
 import com.devteam.module.account.entity.AccountGroup;
 import com.devteam.module.account.entity.AccountType;
 import com.devteam.module.account.entity.UserProfile;
@@ -38,13 +37,6 @@ public class UserData extends AccountData {
     for(AccountGroup sel : group) {
       accountService.createMembership(ClientInfo.DEFAULT, sel, profile.getLoginId());
     }
-    AccountContact contact =
-        new AccountContact()
-        .withLabel("My contact")
-        .withLoginId(profile.getLoginId())
-        .withMobile(profile.getMobile())
-        .withEmail(profile.getEmail()).withCountry("VietNam");
-    accountService.saveAccountContacts(ClientInfo.DEFAULT, profile.getLoginId(), Arrays.asList(contact));
     return profile;
   }
 

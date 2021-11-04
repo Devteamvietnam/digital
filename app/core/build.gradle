@@ -9,8 +9,6 @@ eclipse {
 dependencies {
   api project(':digital-core')
   api project(':digital-module-account')
-  api project(':digital-module-settings')
-
 
   api group: "org.springframework", name: "spring-messaging", version: springFrameworkVersion
   api group: "org.springframework", name: "spring-websocket", version: springFrameworkVersion

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.devteam.module.account.service.AccountService;
-import com.devteam.module.account.entity.AccountContact;
 import com.devteam.module.account.entity.BaseProfile;
 import com.devteam.module.account.entity.OrgProfile;
 import com.devteam.module.account.entity.UserProfile;
@@ -94,35 +93,4 @@ public class ProfileController extends BaseController {
     return execute(Method.PUT, "profile/user", executor);
   }
 
-  @ApiOperation(value = "Retrieve the account contacts by loginId", responseContainer = "List", response = AccountContact.class)
-  @GetMapping("contact/{loginId}/find")
-  public @ResponseBody RestResponse findContactByLoginId(HttpSession session, @PathVariable("loginId") String loginId) {
-    Callable<List<AccountContact>> executor = () -> {
-      ClientInfo clientInfo = getAuthorizedClientInfo(session);
-      return service.findAccountContact(clientInfo, loginId);
-    };
-    return execute(Method.GET, "contact/{loginId}/find", executor);
-  }
-
-  @ApiOperation(value = "Save account contact", response = AccountContact.class)
-  @PutMapping("contact/{loginId}/save")
-  public @ResponseBody RestResponse saveContacts(
-      HttpSession session, @PathVariable("loginId") String loginId, @RequestBody AccountContact contact) {
-    Callable<AccountContact> executor = () -> {
-      ClientInfo clientInfo = getAuthorizedClientInfo(session);
-      return service.saveAccountContact(clientInfo, loginId, contact);
-    };
-    return execute(Method.PUT, "contact/{loginId}/save", executor);
-  }
-
-  @ApiOperation(value = "Delete the account memberships", response = Boolean.class)
-  @DeleteMapping("contact/{loginId}")
-  public @ResponseBody RestResponse deleteContacts(
-      HttpSession session, @PathVariable("loginId") String loginId, @RequestBody List<Long> contactId) {
-    Callable<Boolean> executor = () -> {
-      service.deleteAccountContacts(getAuthorizedClientInfo(session), loginId, contactId);
-      return true;
-    };
-    return execute(Method.DELETE, "contact/{loginId}", executor);
-  }
 }
