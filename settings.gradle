@@ -1,2 +1,31 @@
-rootProject.name = 'digital'
+include 'devteam-app-core'
+project(':devteam-app-core').projectDir = new File('app/core')
+
+include 'devteam-app-release'
+project(':devteam-app-release').projectDir = new File('app/release')
+
+include ':devteam-lib'
+project(':devteam-lib').projectDir = new File('lib')
+
+include 'devteam-core'
+project(':devteam-core').projectDir = new File('core')
+
+include 'devteam-module-springframework'
+project(':devteam-module-springframework').projectDir = new File('module/springframework')
+
+include 'devteam-module-common'
+project(':devteam-module-common').projectDir = new File('module/common')
+
+include 'devteam-module-settings'
+project(':devteam-module-settings').projectDir = new File('module/settings')
+
+include 'devteam-module-account'
+project(':devteam-module-account').projectDir = new File('module/account')
+
+include 'devteam-module-storage'
+project(':devteam-module-storage').projectDir = new File('module/storage')
+
+include 'devteam-tutorial'
+project(':devteam-tutorial').projectDir = new File('tutorial')
+
 

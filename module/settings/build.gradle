@@ -1,0 +1,16 @@
+archivesBaseName = "devteam-module-settings"
+
+eclipse {
+  project {
+    name = 'devteam-module-settings'
+  }
+}
+
+dependencies {
+  api project(':devteam-module-common')
+  api project(':devteam-core')
+}
+
+test {
+  useJUnitPlatform()
+}

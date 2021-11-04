@@ -6,9 +6,20 @@
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="C:/tools/gradle-7.2" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app/core" />
+            <option value="$PROJECT_DIR$/app/release" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/lib" />
+            <option value="$PROJECT_DIR$/module/account" />
+            <option value="$PROJECT_DIR$/module/common" />
+            <option value="$PROJECT_DIR$/module/settings" />
+            <option value="$PROJECT_DIR$/module/springframework" />
+            <option value="$PROJECT_DIR$/module/storage" />
+            <option value="$PROJECT_DIR$/tutorial" />
           </set>
         </option>
       </GradleProjectSettings>

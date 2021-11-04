@@ -1,0 +1,35 @@
+spring:
+  main:
+    banner-mode: off
+    allow-bean-definition-overriding: false
+  datasource:
+    hikari:
+      connectionTimeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+    type: com.zaxxer.hikari.HikariDataSource
+    jdbcUrl: jdbc:hsqldb:mem:devteam
+    driverClassName: org.hsqldb.jdbcDriver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.HSQLDialect
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+  cache:
+    #cache-names: foo,bar
+    caffeine:
+      spec: maximumSize=500,expireAfterAccess=600s
+
+
+logging:
+  level:
+    org: INFO
+    com: INFO
+    com.ddthien: DEBUG
+
+app:
+  env: test
