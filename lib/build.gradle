@@ -1,8 +1,8 @@
-archivesBaseName = "devteam-lib"
+archivesBaseName = "digital-lib"
 
 eclipse {
   project {
-    name = "devteam-lib"
+    name = "digital-lib"
   }
 }
 

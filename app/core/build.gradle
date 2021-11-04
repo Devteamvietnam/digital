@@ -1,15 +1,15 @@
-archivesBaseName = "devteam-app-core"
+archivesBaseName = "digital-app-core"
 
 eclipse {
   project {
-    name = 'devteam-app-core'
+    name = 'digital-app-core'
   }
 }
 
 dependencies {
-  api project(':devteam-core')
-  api project(':devteam-module-account')
-  api project(':devteam-module-settings')
+  api project(':digital-core')
+  api project(':digital-module-account')
+  api project(':digital-module-settings')
 
 
   api group: "org.springframework", name: "spring-messaging", version: springFrameworkVersion

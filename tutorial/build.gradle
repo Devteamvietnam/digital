@@ -1,13 +1,13 @@
-archivesBaseName = "devteam-tutorial"
+archivesBaseName = "digital-tutorial"
 
 eclipse {
   project {
-    name = 'devteam-tutorial'
+    name = 'digital-tutorial'
   }
 }
 
 dependencies {
-  api project(':devteam-lib')
+  api project(':digital-lib')
   api group: 'org.hsqldb',     name: 'hsqldb', version: '2.3.4'
 
 //  testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')

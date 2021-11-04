@@ -1,15 +1,15 @@
-archivesBaseName = "devteam-core"
+archivesBaseName = "digital-core"
 
 eclipse {
   project {
-    name = 'devteam-core'
+    name = 'digital-core'
   }
 }
 
 dependencies {
-  api project(':devteam-lib')
-  api project(':devteam-module-common')
-  api project(':devteam-module-springframework')
+  api project(':digital-lib')
+  api project(':digital-module-common')
+  api project(':digital-module-springframework')
 
   api "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
   api "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"

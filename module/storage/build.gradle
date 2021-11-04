@@ -1,14 +1,14 @@
-archivesBaseName = "devteam-module-storage"
+archivesBaseName = "digital-module-storage"
 
 eclipse {
   project {
-    name = 'devteam-module-storage'
+    name = 'digital-module-storage'
   }
 }
 
 dependencies {
-  api project(':devteam-module-common')
-  api project(':devteam-core')
+  api project(':digital-module-common')
+  api project(':digital-core')
   
 //  testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
   testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"

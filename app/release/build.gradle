@@ -1,10 +1,10 @@
 import org.apache.tools.ant.filters.*;
 
-archivesBaseName = 'devteam-app-release'
+archivesBaseName = 'digital-app-release'
 
 eclipse {
   project {
-    name = 'devteam-app-release'
+    name = 'digital-app-release'
   }
 }
 
@@ -27,11 +27,11 @@ configurations {
 
 dependencies {
 
-  api project(":devteam-app-core") ;
-  api project(":devteam-core")
-  api project(":devteam-module-common")
-  api project(":devteam-module-account")
-  api project(":devteam-module-settings")
+  api project(":digital-app-core") ;
+  api project(":digital-core")
+  api project(":digital-module-common")
+  api project(":digital-module-account")
+  api project(":digital-module-settings")
 
 
   implementation group: "com.h2database", name: "h2", version: '1.4.200'
@@ -205,14 +205,14 @@ dependencies {
   jettyJars group: "org.springframework", name: "spring-webmvc", version: springFrameworkVersion
 
   /*************************server runtime deploy jars***************************/
-  serverAppJars project(':devteam-lib')
-  serverAppJars project(':devteam-core')
-  serverAppJars project(':devteam-app-core')
-  serverAppJars project(':devteam-module-common')
-  serverAppJars project(':devteam-module-springframework')
-  serverAppJars project(':devteam-module-settings')
-  serverAppJars project(':devteam-module-storage')
-  serverAppJars project(':devteam-module-account')
+  serverAppJars project(':digital-lib')
+  serverAppJars project(':digital-core')
+  serverAppJars project(':digital-app-core')
+  serverAppJars project(':digital-module-common')
+  serverAppJars project(':digital-module-springframework')
+  serverAppJars project(':digital-module-settings')
+  serverAppJars project(':digital-module-storage')
+  serverAppJars project(':digital-module-account')
 
   serverAppJars group: 'commons-cli', name: 'commons-cli', version: '1.2'
 

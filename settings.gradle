@@ -1,31 +1,31 @@
-include 'devteam-app-core'
-project(':devteam-app-core').projectDir = new File('app/core')
+include 'digital-app-core'
+project(':digital-app-core').projectDir = new File('app/core')
 
-include 'devteam-app-release'
-project(':devteam-app-release').projectDir = new File('app/release')
+include 'digital-app-release'
+project(':digital-app-release').projectDir = new File('app/release')
 
-include ':devteam-lib'
-project(':devteam-lib').projectDir = new File('lib')
+include ':digital-lib'
+project(':digital-lib').projectDir = new File('lib')
 
-include 'devteam-core'
-project(':devteam-core').projectDir = new File('core')
+include 'digital-core'
+project(':digital-core').projectDir = new File('core')
 
-include 'devteam-module-springframework'
-project(':devteam-module-springframework').projectDir = new File('module/springframework')
+include 'digital-module-springframework'
+project(':digital-module-springframework').projectDir = new File('module/springframework')
 
-include 'devteam-module-common'
-project(':devteam-module-common').projectDir = new File('module/common')
+include 'digital-module-common'
+project(':digital-module-common').projectDir = new File('module/common')
 
-include 'devteam-module-settings'
-project(':devteam-module-settings').projectDir = new File('module/settings')
+include 'digital-module-settings'
+project(':digital-module-settings').projectDir = new File('module/settings')
 
-include 'devteam-module-account'
-project(':devteam-module-account').projectDir = new File('module/account')
+include 'digital-module-account'
+project(':digital-module-account').projectDir = new File('module/account')
 
-include 'devteam-module-storage'
-project(':devteam-module-storage').projectDir = new File('module/storage')
+include 'digital-module-storage'
+project(':digital-module-storage').projectDir = new File('module/storage')
 
-include 'devteam-tutorial'
-project(':devteam-tutorial').projectDir = new File('tutorial')
+include 'digital-tutorial'
+project(':digital-tutorial').projectDir = new File('tutorial')
 
 

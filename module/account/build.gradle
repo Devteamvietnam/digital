@@ -1,16 +1,16 @@
-archivesBaseName = "devteam-module-account"
+archivesBaseName = "digital-module-account"
 
 eclipse {
   project {
-    name = 'devteam-module-account'
+    name = 'digital-module-account'
   }
 }
 
 dependencies {
-  api project(':devteam-module-common')
-  api project(':devteam-core')
-  api project(':devteam-module-settings')
-  api project(':devteam-module-storage')
+  api project(':digital-module-common')
+  api project(':digital-core')
+  api project(':digital-module-settings')
+  api project(':digital-module-storage')
 }
 
 test {

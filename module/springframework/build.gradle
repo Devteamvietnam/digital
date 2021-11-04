@@ -1,8 +1,8 @@
-archivesBaseName = "devteam-module-springframework"
+archivesBaseName = "digital-module-springframework"
 
 eclipse {
   project {
-    name = "devteam-module-springframework"
+    name = "digital-module-springframework"
   }
 }
 
@@ -13,7 +13,7 @@ configurations {
 
 
 dependencies {
-  api project(':devteam-module-common')
+  api project(':digital-module-common')
 
   api ("org.springframework.boot:spring-boot-loader:${springBootVersion}") ;
   api("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}") ;
