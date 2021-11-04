@@ -31,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ResourceTag extends EntityTag {
-  public static final String TABLE_NAME = "vion_settings_resource_tag";
+  public static final String TABLE_NAME = "settings_resource_tag";
 
   @Column(name = "resource_type_id", updatable=false, insertable=false)
   private Long resourceTypeId;

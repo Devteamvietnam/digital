@@ -46,21 +46,21 @@ public class DBService {
 
     for (DBServicePlugin plugin : plugins) {
       Logger logger = plugin.getLogger();
-      logger.info("Vion postInitDb(...)");
+      logger.info("postInitDb(...)");
       plugin.postInitDb(client, this, context, initSampleData);
     }
   }
 
-  public <T> void initDb(ClientInfo client, T vionCtx, boolean initSampleData) {
+  public <T> void initDb(ClientInfo client, T devCtx, boolean initSampleData) {
     if (plugins == null)
       return;
     try {
       for (DBServicePlugin plugin : plugins) {
-        initDb(client, vionCtx, plugin);
+        initDb(client, devCtx, plugin);
       }
       if (initSampleData) {
         for (DBServicePlugin plugin : plugins) {
-          initSample(client, vionCtx, plugin);
+          initSample(client, devCtx, plugin);
         }
       }
     } catch (Throwable error) {
@@ -71,7 +71,7 @@ public class DBService {
 
   public void initDb(ClientInfo client, DBServicePlugin plugin) throws Exception {
     Logger log = plugin.getLogger();
-    log.info("Vion initDb()");
+    log.info("initDb()");
     plugin.initDb(client, context);
   }
 
@@ -81,15 +81,15 @@ public class DBService {
     plugin.createSammpleData(client, context);
   }
 
-  public <T> void initDb(ClientInfo client, T vionCtx, DBServicePlugin plugin) throws Exception {
+  public <T> void initDb(ClientInfo client, T devCtx, DBServicePlugin plugin) throws Exception {
     Logger logger = plugin.getLogger();
-    logger.info("Vion initDb()");
-    plugin.initDb(client, vionCtx, context);
+    logger.info("initDb()");
+    plugin.initDb(client, devCtx, context);
   }
 
-  public <T> void initSample(ClientInfo client, T vionCtx, DBServicePlugin plugin) throws Exception {
+  public <T> void initSample(ClientInfo client, T devCtx, DBServicePlugin plugin) throws Exception {
     Logger logger = plugin.getLogger();
-    logger.info("Vion createSampleData(...)");
-    plugin.createSammpleData(client, vionCtx, context);
+    logger.info("createSampleData(...)");
+    plugin.createSammpleData(client, devCtx, context);
   }
 }

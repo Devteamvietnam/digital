@@ -32,7 +32,7 @@ import java.util.List;
 public class Location extends BaseEntity<Long> implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_settings_location";
+  public static final String TABLE_NAME = "settings_location";
 
   @NotNull
   private String code;

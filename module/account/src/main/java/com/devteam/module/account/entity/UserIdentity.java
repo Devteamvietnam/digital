@@ -33,7 +33,7 @@ import lombok.Setter;
 public class UserIdentity extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_account_user_identity";
+  public static final String TABLE_NAME = "account_user_identity";
 
   @NotNull
   @Column(name = "login_id")

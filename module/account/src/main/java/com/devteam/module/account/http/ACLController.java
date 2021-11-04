@@ -35,7 +35,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Api(value = "devteam", tags = { "acl" })
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/acl")
+@RequestMapping("/rest/dev/v1.0.0/acl")
 @Slf4j
 public class ACLController extends BaseAccountController {
     @Getter
@@ -45,7 +45,7 @@ public class ACLController extends BaseAccountController {
         private String loginId;
         private String password;
         private int timeToLiveInMin;
-        private AccessType accessType = AccessType.VION;
+        private AccessType accessType = AccessType.ACCOUNT;
     }
 
     @Autowired
@@ -107,7 +107,7 @@ public class ACLController extends BaseAccountController {
             AccountAclModel accountAcls = accountAcl.getAccountAcl();
             if (accountAcl != null) {
                 List<AppAccessPermission> appPermissions = securityService.findPermissions(client,
-                        AccessType.VION, accountAcls.getLoginId());
+                        AccessType.ACCOUNT, accountAcls.getLoginId());
                 accountAcls.setAppPermissions(appPermissions);
                 clientSession.setBean(AccountAclModel.class, accountAcls);
             }

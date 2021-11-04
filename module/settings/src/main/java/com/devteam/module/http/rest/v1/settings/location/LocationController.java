@@ -18,7 +18,7 @@ import java.util.concurrent.Callable;
 
 @Api(value="devteam", tags= {"settings/location"})
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/settings/location")
+@RequestMapping("/rest/dev/v1.0.0/settings/location")
 public class LocationController extends BaseController {
   @Autowired
   private LocationService service;

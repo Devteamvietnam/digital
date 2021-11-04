@@ -32,7 +32,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "devteam", tags = {"storage"})
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/storage")
+@RequestMapping("/rest/dev/v1.0.0/storage")
 public class StorageController extends BaseController {
 
   @Autowired

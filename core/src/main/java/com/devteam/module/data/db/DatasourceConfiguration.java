@@ -23,7 +23,7 @@ public class DatasourceConfiguration extends HikariConfig {
   @Bean("datasource")
   @ConfigurationProperties("spring.datasource")
   public DataSource dataSource() throws SQLException {
-    System.out.println("\n\nVION CREATE DATASOURCE\n\n");
+    System.out.println("\n\nCREATE DATASOURCE\n\n");
     return DataSourceBuilder.create().type(HikariDataSource.class).build();
   }
 }

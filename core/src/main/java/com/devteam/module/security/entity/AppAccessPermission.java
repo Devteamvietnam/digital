@@ -16,7 +16,7 @@ public class AppAccessPermission  {
   private String     appName;
   private String     loginId;
   @Enumerated(EnumType.STRING)
-  private AccessType accessType = AccessType.VION;
+  private AccessType accessType = AccessType.ACCOUNT;
   @Enumerated(EnumType.STRING)
   private Capability capability;
 }

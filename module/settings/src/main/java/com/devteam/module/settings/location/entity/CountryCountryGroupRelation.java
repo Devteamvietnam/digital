@@ -22,7 +22,7 @@ import lombok.Setter;
 public class CountryCountryGroupRelation extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_settings_country_group_rel";
+  public static final String TABLE_NAME = "settings_country_group_rel";
 
   @NotNull
   @Column(name = "country_id")

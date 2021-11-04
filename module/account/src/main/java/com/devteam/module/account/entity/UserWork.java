@@ -28,7 +28,7 @@ import lombok.Setter;
 @JsonInclude(Include.NON_NULL)
 @NoArgsConstructor @Getter @Setter
 public class UserWork extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "vion_account_user_work";
+  public static final String TABLE_NAME = "account_user_work";
 
   @NotNull
   @Column(name = "login_id")

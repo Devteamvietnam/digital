@@ -31,7 +31,7 @@ import lombok.Setter;
 )
 @NoArgsConstructor @Getter @Setter
 public class AppPermission extends BaseEntity<Long>  {
-  public static final String TABLE_NAME = "vion_security_app_permission";
+  public static final String TABLE_NAME = "security_app_permission";
 
   @ManyToOne(optional = false)
   @JoinColumn(name = "app_id")
@@ -44,7 +44,7 @@ public class AppPermission extends BaseEntity<Long>  {
   @NotNull
   @Enumerated(EnumType.STRING)
   @Column(name = "access_type")
-  private AccessType accessType = AccessType.VION;
+  private AccessType accessType = AccessType.ACCOUNT;
 
   @NotNull
   @Enumerated(EnumType.STRING)

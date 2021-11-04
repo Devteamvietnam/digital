@@ -46,7 +46,7 @@ public class Account extends BaseEntity<Long> {
 
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_account_account";
+  public static final String TABLE_NAME = "account_account";
 
   @NotNull
   @Column(name="login_id", unique =true)

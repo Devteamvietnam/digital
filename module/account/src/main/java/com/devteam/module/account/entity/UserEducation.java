@@ -30,7 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 public class UserEducation extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "vion_account_user_education";
+  public static final String TABLE_NAME = "account_user_education";
 
   @NotNull
   @Column(name = "login_id")

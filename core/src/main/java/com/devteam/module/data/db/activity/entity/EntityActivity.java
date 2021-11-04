@@ -36,7 +36,7 @@ import lombok.Setter;
 @NoArgsConstructor @Getter @Setter
 public class EntityActivity extends BaseEntity<Long> {
   private static final long  serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_core_activity_entity";
+  public static final String TABLE_NAME = "core_activity_entity";
 
   private String       name;
   @Column(name="entity_table")

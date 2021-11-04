@@ -17,9 +17,9 @@ abstract public class InitSecurityDBPlugin extends ServicePlugin {
 
   abstract public App[] getAvailableApps(ClientInfo client, ApplicationContext context) throws Exception ;
 
-  abstract public <T> List<AppPermission> getInitAppPermissions(ClientInfo client, T vionCtx,  ApplicationContext context) throws Exception ;
+  abstract public <T> List<AppPermission> getInitAppPermissions(ClientInfo client, T devCtx,  ApplicationContext context) throws Exception ;
 
-  public <T> List<AppPermission> getSampleAppPermissions(ClientInfo client, T vionCtx,  ApplicationContext context) throws Exception {
+  public <T> List<AppPermission> getSampleAppPermissions(ClientInfo client, T devCtx,  ApplicationContext context) throws Exception {
     return null;
   }
 }

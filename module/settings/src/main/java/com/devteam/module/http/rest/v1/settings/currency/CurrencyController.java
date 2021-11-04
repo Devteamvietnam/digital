@@ -28,7 +28,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "devteam", tags = { "settings/currency" })
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/settings/currency")
+@RequestMapping("/rest/dev/v1.0.0/settings/currency")
 public class CurrencyController extends BaseController {
 
   @Autowired

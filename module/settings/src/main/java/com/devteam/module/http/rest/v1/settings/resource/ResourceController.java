@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="devteam", tags= {"settings/resource"})
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/settings/resource")
+@RequestMapping("/rest/dev/v1.0.0/settings/resource")
 public class ResourceController extends BaseController {
   @Autowired
   private ResourceService service;

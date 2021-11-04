@@ -23,7 +23,7 @@ import java.io.Serializable;
 public class LocationAlias extends BaseEntity<Long> implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_settings_location_reference_code";
+  public static final String TABLE_NAME = "settings_location_reference_code";
 
   @NotNull
   private String code;

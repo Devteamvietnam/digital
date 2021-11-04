@@ -26,7 +26,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 public class LocationType extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "vion_settings_location_type";
+  public static final String TABLE_NAME = "settings_location_type";
 
   @NotNull
   private String type;

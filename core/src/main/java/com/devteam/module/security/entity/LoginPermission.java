@@ -19,7 +19,7 @@ import lombok.Setter;
 abstract public class LoginPermission extends Persistable<Long> {
   private static final long serialVersionUID = 1L;
 
-  static public enum Type { VION }
+  static public enum Type { ACCOUNT }
 
   @NotNull
   @Column(name="login_id")

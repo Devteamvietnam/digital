@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 public class AccountAclModel {
-    private AccessType accessType = AccessType.VION;
+    private AccessType accessType = AccessType.ACCOUNT;
     private String loginId;
     private int priority;
 

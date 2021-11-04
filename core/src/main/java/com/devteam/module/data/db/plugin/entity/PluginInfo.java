@@ -31,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PluginInfo extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "vion_core_plugin_info";
+  public static final String TABLE_NAME = "core_plugin_info";
 
   @NotNull
   private String module;

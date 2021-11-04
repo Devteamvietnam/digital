@@ -28,7 +28,7 @@ import lombok.Setter;
 public class TransactionActivity extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_core_activity_transaction";
+  public static final String TABLE_NAME = "core_activity_transaction";
 
   private String name;
   private String label;

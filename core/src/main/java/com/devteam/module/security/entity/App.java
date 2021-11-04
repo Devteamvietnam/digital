@@ -27,7 +27,7 @@ import lombok.Setter;
 public class App extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_security_app";
+  public static final String TABLE_NAME = "security_app";
 
   @NotNull
   private String     module;

@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter @Setter
 public class AccountContact extends AbstractContact {
   private static final long serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_account_contact";
+  public static final String TABLE_NAME = "account_contact";
 
   public static enum Type { Primary, Secondary }
 

@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="devteam", tags= {"account"})
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/security")
+@RequestMapping("/rest/dev/v1.0.0/security")
 public class AppSecurityController extends BaseController {
   @Autowired
   private SecurityService service;

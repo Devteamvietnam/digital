@@ -46,7 +46,7 @@ spring:
       idleTimeout: 600000
       maxLifetime: 1800000
     #jdbcUrl: jdbc:h2:mem:testdb
-    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/viondb
+    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digitaldb
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -85,7 +85,7 @@ spring:
     activate:
       on-profile: h2
   datasource:
-    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/viondb
+    jdbcUrl: jdbc:h2:${app.home}/data/db/h2/digitaldb
     driverClassName: org.h2.Driver
     username: sa
     password:
@@ -132,7 +132,7 @@ spring:
       on-profile: postgres
   datasource:
     driverClassName: org.postgresql.Driver
-    jdbcUrl: jdbc:postgresql://localhost:5432/viondb
+    jdbcUrl: jdbc:postgresql://localhost:5432/digitaldb
     username: devteam
     password: devteam
   jpa:

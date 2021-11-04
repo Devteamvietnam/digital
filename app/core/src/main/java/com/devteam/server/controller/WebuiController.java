@@ -25,7 +25,7 @@ public class WebuiController {
 
   @GetMapping(
     value= {
-      "/", "/app", "/app/vion/ws:{id}/**", "/login/app"
+      "/", "/app", "/app/ws:{id}/**", "/login/app"
     }
   )
   public void appPage(HttpServletRequest req, HttpServletResponse response) throws Exception {

@@ -25,7 +25,7 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(Include.NON_NULL)
 @NoArgsConstructor @Getter @Setter
 public class Country extends BaseEntity<Long> {
-  public static final String TABLE_NAME = "vion_settings_country";
+  public static final String TABLE_NAME = "settings_country";
 
   @NotNull
   @Column(unique = true)

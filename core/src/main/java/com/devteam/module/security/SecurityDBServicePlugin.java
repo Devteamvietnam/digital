@@ -32,9 +32,9 @@ public class SecurityDBServicePlugin extends DBServicePlugin {
     }
   }
 
-  public <T> void createSammpleData(ClientInfo client, T vionCtx, ApplicationContext context) throws Exception {
+  public <T> void createSammpleData(ClientInfo client, T devCtx, ApplicationContext context) throws Exception {
     for (InitSecurityDBPlugin sel : initDbPlugins) {
-      saveAppPermissions(client, sel.getSampleAppPermissions(client, vionCtx, context));
+      saveAppPermissions(client, sel.getSampleAppPermissions(client, devCtx, context));
     }
   }
 

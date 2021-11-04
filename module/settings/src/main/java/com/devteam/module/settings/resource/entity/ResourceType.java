@@ -38,7 +38,7 @@ import lombok.Setter;
 @NoArgsConstructor @Getter @Setter
 public class ResourceType extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_settings_resource_type";
+  public static final String TABLE_NAME = "settings_resource_type";
 
   @NotNull
   private String  type;

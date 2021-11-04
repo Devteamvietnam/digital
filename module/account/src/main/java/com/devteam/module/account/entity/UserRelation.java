@@ -30,7 +30,7 @@ import lombok.Setter;
 public class UserRelation extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_account_user_relation";
+  public static final String TABLE_NAME = "account_user_relation";
 
   @NotNull
   @Column(name = "login_id")

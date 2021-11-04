@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value = "devteam", tags = { "storage" })
 @RestController
-@RequestMapping("/vion/storage")
+@RequestMapping("/storage")
 public class WWWStorageController extends BaseController {
 
   @Autowired

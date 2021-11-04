@@ -63,7 +63,7 @@ PG_HOST='localhost'
 PG_ADMIN_USER='postgres'
 PG_PASSWORD='admin'
 PG_USER='devteam'
-DB_NAME='viondb'
+DB_NAME='devdb'
 
 
 if [ "$PG_CMD" = "createUser" ] ; then

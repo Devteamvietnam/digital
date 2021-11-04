@@ -29,9 +29,9 @@ public class DBServicePlugin {
       throws Exception {
   }
 
-  public <T> void initDb(ClientInfo client, T vionCtx, ApplicationContext context) throws Exception {
+  public <T> void initDb(ClientInfo client, T devCtx, ApplicationContext context) throws Exception {
   }
 
-  public <T> void createSammpleData(ClientInfo client, T vionCtx, ApplicationContext context) throws Exception {
+  public <T> void createSammpleData(ClientInfo client, T devCtx, ApplicationContext context) throws Exception {
   }
 }

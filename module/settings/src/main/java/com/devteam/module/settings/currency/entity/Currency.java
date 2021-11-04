@@ -35,7 +35,7 @@ import lombok.Setter;
 public class Currency extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_settings_currency";
+  public static final String TABLE_NAME = "settings_currency";
 
   @NotNull
   private String name;

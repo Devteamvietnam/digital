@@ -21,7 +21,7 @@ import java.io.Serializable;
 @Getter @Setter
 public class CountryGroup extends BaseEntity<Long> implements Serializable {
   private static final long serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_settings_country_group";
+  public static final String TABLE_NAME = "settings_country_group";
 
   @Column(name = "parent_id")
   private Long parentId;

@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="devteam", tags= {"account"})
 @RestController
 @ConditionalOnBean(AuthenticationService.class)
-@RequestMapping("/rest/vion/v1.0.0/account")
+@RequestMapping("/rest/dev/v1.0.0/account")
 public class ProfileController extends BaseController {
   @Autowired
   private AccountService service;

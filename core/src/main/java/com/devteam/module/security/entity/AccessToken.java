@@ -42,7 +42,7 @@ import lombok.Setter;
 public class AccessToken extends BaseEntity<Long> {
   private static final long serialVersionUID = 1L;
 
-  public static final String TABLE_NAME = "vion_security_access_token";
+  public static final String TABLE_NAME = "security_access_token";
 
   static public enum AccessType { Account, Partner, Temporary, None }
 

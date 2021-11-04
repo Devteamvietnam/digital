@@ -30,7 +30,7 @@ import lombok.Setter;
 @NoArgsConstructor @Getter @Setter
 public class CurrencyExchangeRate extends BaseEntity<Long> implements Serializable {
   private static final long serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_currency_exchange_rate";
+  public static final String TABLE_NAME = "currency_exchange_rate";
 
   @NotNull
   @Column(unique = true)

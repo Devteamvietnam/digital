@@ -33,9 +33,9 @@ public class AppInitSecurityDBPlugin extends InitSecurityDBPlugin {
     return createApps();
   }
 
-  public <T> List<AppPermission> getInitAppPermissions(ClientInfo client, T vionCtx, ApplicationContext context)
+  public <T> List<AppPermission> getInitAppPermissions(ClientInfo client, T devCtx, ApplicationContext context)
       throws Exception {
-    Account account = (Account) vionCtx;
+    Account account = (Account) devCtx;
     String adminUser = account.getAdminAccountLoginId();
     if (adminUser == null)
       adminUser = "admin";

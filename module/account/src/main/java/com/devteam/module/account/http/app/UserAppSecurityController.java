@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Api(value="devteam", tags= {"account"})
 @RestController
-@RequestMapping("/rest/vion/v1.0.0/security/app")
+@RequestMapping("/rest/dev/v1.0.0/security/app")
 public class UserAppSecurityController extends BaseController {
 
   protected UserAppSecurityController() {

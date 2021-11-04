@@ -33,7 +33,7 @@ import lombok.Setter;
 @Getter @Setter
 public class City extends BaseEntity<Long> implements Serializable {
   private static final long serialVersionUID = 1L;
-  public static final String TABLE_NAME = "vion_settings_city";
+  public static final String TABLE_NAME = "settings_city";
 
   final static public String[] FIELDS = { "code", "label", "countryId", "stateId" };
 
