@@ -17,7 +17,7 @@ configurations {
 }
 
 project.ext {
-
+    hibernateVersion = '5.6.1.Final'
 }
 
 repositories {
@@ -30,7 +30,37 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+    implementation 'commons-dbcp:commons-dbcp:1.4'
+    implementation 'commons-dbutils:commons-dbutils:1.7'
+
+    implementation('org.flywaydb:flyway-core') {
+        exclude group: 'commons-logging', module: 'commons-logging'
+    }
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'commons-codec:commons-codec'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'com.fasterxml.jackson.core:jackson-core'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jdk8'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+    implementation 'org.modelmapper:modelmapper:2.3.6'
+
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+    implementation 'io.springfox:springfox-data-rest:3.0.0'
+    implementation 'io.springfox:springfox-bean-validators:2.9.2'
+    implementation "org.hibernate:hibernate-core:${hibernateVersion}"
+    implementation "org.hibernate:hibernate-ehcache:${hibernateVersion}"
+    implementation "org.hibernate:hibernate-search-orm:${hibernateVersion}"
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.10.2'
+
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'com.h2database:h2'
@@ -43,6 +73,13 @@ dependencies {
 
     //other package
     implementation 'org.json:json:20210307'
+    implementation "org.hibernate:hibernate-entitymanager:${hibernateVersion}"
+    implementation 'javax.annotation:javax.annotation-api:1.3.2'
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'org.hibernate', module: 'hibernate-core'
+        exclude group: 'org.hibernate', module: 'hibernate-entitymanager'
+    }
+    implementation "org.hibernate:hibernate-core:${hibernateVersion}"
 }
 
 test {
