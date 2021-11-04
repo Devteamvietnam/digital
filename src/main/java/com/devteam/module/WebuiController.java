@@ -1,4 +1,4 @@
-package com.devteam.module.security;
+package com.devteam.module;
 
 import com.devteam.module.util.IOUtil;
 import org.springframework.web.bind.annotation.GetMapping;

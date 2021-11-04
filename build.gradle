@@ -1,179 +1,375 @@
-plugins {
-    id 'org.springframework.boot' version '2.5.6'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-    id 'eclipse'
-    id 'maven-publish'
-}
+import org.gradle.plugins.ide.eclipse.model.SourceFolder
 
-group = 'com.devteam.module'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'eclipse'
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
+    project.ext {
+        slf4jVersion             = '1.7.30'
+        log4jVersion             = '2.14.1'
+
+        jacksonVersion           = '2.12.3'
+        springfoxVersion           = '3.0.0'
+
+        springBootVersion        = '2.5.0'
+        springFrameworkVersion   = '5.3.7'
+        springSecurityVersion    = '5.3.3.RELEASE'
+        springIntegrationVersion = '5.5.0'
+        springDataVersion        = '2.5.1'
+        springDataJpaVersion     = '2.5.1'
+        springBatchVersion       = '4.3.3'
+
+        hibernateVersion          = '5.4.18.Final'
+        hibernateValidatorVersion = '5.4.3.Final'
+
+        jettyVersion             = "9.4.30.v20200611"
+
     }
-}
 
-project.ext {
-    slf4jVersion             = '1.7.30'
-    log4jVersion             = '2.14.1'
+    eclipse {
+        classpath {
+            downloadSources=true
+        }
 
-    jacksonVersion           = '2.12.3'
-    springfoxVersion           = '3.0.0'
+        project {
+        }
+    }
 
-    springFrameworkVersion   = '5.3.7'
-    springSecurityVersion    = '5.3.3.RELEASE'
-    springIntegrationVersion = '5.5.0'
-    springDataVersion        = '2.5.1'
-    springDataJpaVersion     = '2.5.1'
-    springBatchVersion       = '4.3.3'
+    eclipse.classpath.defaultOutputDir = file( 'build/classes' )
 
-    hibernateVersion          = '5.4.18.Final'
-    hibernateValidatorVersion = '5.4.3.Final'
+    eclipse.classpath.file {
+        beforeMerged { classpath ->
+            classpath.entries.clear()
+        }
+        whenMerged {  cp ->
+            cp.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/main/") }*.output = "build/bin/main"
+            cp.entries.findAll { it instanceof SourceFolder && it.path.startsWith("src/test/") }*.output = "build/bin/test"
+            cp.entries.removeAll { it.kind == "output" }
+        }
+    }
 
-    jettyVersion             = "9.4.30.v20200611"
-}
+    group = 'com.devteam'
+    version = '1.0'
+    sourceCompatibility = 14
+    compileJava.options.encoding = 'UTF-8'
 
-repositories {
-    mavenCentral()
-}
+    configurations {
+        compile {
+            transitive = true
+        }
+    }
 
-dependencies {
-    /*****************Spring Boot*********/
-    implementation 'org.springframework.boot:spring-boot-starter-batch'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-jersey'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
 
-    /*****************Spring Framework*********/
-    implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: '5.5.5'
-    implementation group: 'org.springframework', name: 'spring-messaging', version: '5.3.10'
-    implementation group: "org.springframework", name: "spring-core", version: springFrameworkVersion
-    implementation group: "org.springframework", name: "spring-beans", version: springFrameworkVersion
-    implementation group: "org.springframework", name: "spring-context", version: springFrameworkVersion
-    implementation group: "org.springframework", name: "spring-context-support", version: springFrameworkVersion
-    implementation group: "org.springframework", name: "spring-aop", version: springFrameworkVersion
-    implementation group: "org.springframework", name: "spring-expression", version: springFrameworkVersion
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
 
-    /************** Srping Security*****************/
-    implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-crypto", version: springSecurityVersion
-    implementation group: "org.springframework.security", name: "spring-security-rsa", version: "1.0.1.RELEASE"
+    artifacts {
+        archives sourcesJar
+    }
 
-    /*************************jetty web server runtime  ***************************/
-    implementation group: "org.eclipse.jetty", name: "jetty-servlet", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-servlets", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-continuation", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-http", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-util", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-io", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-server", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-webapp", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-security", version: jettyVersion
-    implementation group: "org.eclipse.jetty", name: "jetty-client", version: jettyVersion
+    dependencies {
+        implementation group: "com.h2database", name: "h2", version: '1.4.200'
 
-    implementation group: "org.eclipse.jetty.websocket", name: "websocket-common", version: jettyVersion
-    implementation group: "org.eclipse.jetty.websocket", name: "websocket-api", version: jettyVersion
-    implementation group: "org.eclipse.jetty.websocket", name: "websocket-servlet", version: jettyVersion
-    implementation group: "org.eclipse.jetty.websocket", name: "websocket-client", version: jettyVersion
-    implementation group: "org.eclipse.jetty.websocket", name: "websocket-server", version: jettyVersion
+        /*************************Commons runtime deploy jars***************************/
 
-    /*************************hibernate runtime***************************/
-    implementation group: "javax.el", name: "javax.el-api",                version: "2.2.4"
-    implementation group: "org.glassfish.web", name: "javax.el",           version: "2.2.4"
+        implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+        implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 
-    implementation group: "org.hibernate", name: "hibernate-core",           version: hibernateVersion
-    implementation group: "org.hibernate", name: "hibernate-entitymanager",  version: hibernateVersion
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jacksonVersion
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jacksonVersion
+        implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonVersion
+        implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: jacksonVersion
 
-    implementation group: "org.hibernate", name: "hibernate-validator",      version: hibernateValidatorVersion
-    implementation group: "net.bytebuddy", name: "byte-buddy-dep",           version: '1.10.13'
-    implementation group: "org.ow2.asm", name: "asm",           version: '7.3.1'
+        implementation group: 'com.fasterxml', name: 'classmate', version: "1.3.4"
 
-    implementation group: "org.hibernate.common", name: "hibernate-commons-annotations", version: "5.1.0.Final"
+        implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
 
-    implementation group: "org.hibernate.javax.persistence", name: "hibernate-jpa-2.1-api", version: '1.0.2.Final'
-    implementation group: "javax.persistence", name: "javax.persistence-api", version: '2.2'
-
-    implementation group: "org.javassist", name: "javassist", version: '3.18.1-GA'
-    implementation group: "dom4j", name: "dom4j", version: '1.6.1'
-    implementation group: "antlr", name: "antlr", version: '2.7.7'
-    implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
-
-    implementation group: "com.h2database", name: "h2", version: '1.4.200'
-    implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
-    implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '9.2.0.jre11'
-
-    /*********************jUNIT Test*****/
-    implementation group: 'junit', name: 'junit', version: '4.12'
-    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.2'
-    implementation group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.7.2'
-
-    /*********************Other Package*****************/
-    implementation group: 'commons-cli', name: 'commons-cli', version: '1.2'
-
-    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
-
-    implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
-    implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
-    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
-    implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
-
-    implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
-    implementation group: 'io.springfox', name: 'springfox-core', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-oas', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-spi', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-schema', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-swagger-common', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-spring-web', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-spring-webmvc', version: springfoxVersion
-    implementation group: 'io.springfox', name: 'springfox-spring-webflux', version: springfoxVersion
+        implementation group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+        implementation group: 'javax.activation', name: 'javax.activation-api', version: '1.2.0'
+        implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+        implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+        implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+        implementation group: 'javax.batch', name: 'javax.batch-api', version: '1.0.1'
+        implementation group: 'javax.mail', name: 'mail', version: '1.4'
+        implementation group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
 
 
-    implementation group: 'org.springframework.plugin', name: 'spring-plugin-core', version: '2.0.0.RELEASE'
-    implementation group: 'org.springframework.plugin', name: 'spring-plugin-metadata', version: '2.0.0.RELEASE'
 
-    implementation group: 'com.google.guava',  name: 'guava', version: '30.1.1-jre'
-    implementation group: 'com.google.guava', name: 'failureaccess', version: '1.0.1'
-    implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+        implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jacksonVersion
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jacksonVersion
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jacksonVersion
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: jacksonVersion
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-smile', version: jacksonVersion
+        /*************************springframework runtime deploy jars***************************/
+        implementation group: "org.springframework", name: "spring-core", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-beans", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-context", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-context-support", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-aop", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-expression", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-web", version: springFrameworkVersion
 
-    implementation group: 'com.fasterxml', name: 'classmate', version: "1.3.4"
+        implementation group: 'org.springframework.data', name: 'spring-data-commons', version: springDataVersion
+        implementation group: 'org.springframework.data', name: 'spring-data-jpa',     version: springDataJpaVersion
 
-    implementation group: 'commons-codec', name: 'commons-codec', version: '1.10'
+        implementation group: 'org.springframework.integration', name: 'spring-integration-core', version: springIntegrationVersion
 
-    implementation group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
-    implementation group: 'javax.activation', name: 'javax.activation-api', version: '1.2.0'
-    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-    implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
-    implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
-    implementation group: 'javax.batch', name: 'javax.batch-api', version: '1.0.1'
-    implementation group: 'javax.mail', name: 'mail', version: '1.4'
-    implementation group: 'com.sun.activation', name: 'javax.activation', version: '1.2.0'
+        implementation group: "javax.inject", name: "javax.inject", version: "1"
+        implementation group: 'org.yaml', name: 'snakeyaml', version: '1.15'
 
-    implementation 'org.flywaydb:flyway-core'
-    compileOnly 'org.projectlombok:lombok'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'com.h2database:h2'
-    runtimeOnly 'mysql:mysql-connector-java'
-    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
-    runtimeOnly 'org.postgresql:postgresql'
-    runtimeOnly 'org.hsqldb:hsqldb'
-    annotationProcessor 'org.projectlombok:lombok'
-}
 
-test {
-    useJUnitPlatform()
+        implementation "org.springframework.boot:spring-boot:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-loader:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-batch:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-log4j2:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+
+        implementation "org.springframework.batch:spring-batch-core:${springBatchVersion}"
+        implementation "org.springframework.batch:spring-batch-infrastructure:${springBatchVersion}"
+
+        implementation group: "org.springframework.security", name: "spring-security-core", version: springSecurityVersion
+        implementation group: "org.springframework.security", name: "spring-security-config", version: springSecurityVersion
+        implementation group: "org.springframework.security", name: "spring-security-web", version: springSecurityVersion
+        implementation group: "org.springframework.security", name: "spring-security-crypto", version: springSecurityVersion
+        implementation group: "org.springframework.security", name: "spring-security-rsa", version: "1.0.1.RELEASE"
+
+
+        implementation group: "org.springframework", name: "spring-jdbc", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-tx", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-orm", version: springFrameworkVersion
+
+
+        implementation group: "org.webjars", name: "stomp-websocket", version: '2.3.3'
+        implementation group: "org.springframework", name: "spring-messaging", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-websocket", version: springFrameworkVersion
+        implementation group: "org.springframework.boot", name: "spring-boot-starter-websocket", version: springBootVersion
+        implementation group: 'io.micrometer', name: 'micrometer-core', version: '1.7.0'
+
+
+        /*************************hibernate runtime deploy jars***************************/
+        implementation group: "javax.el", name: "javax.el-api",                version: "2.2.4"
+        implementation group: "org.glassfish.web", name: "javax.el",           version: "2.2.4"
+
+        implementation group: "org.hibernate", name: "hibernate-core",           version: hibernateVersion
+        implementation group: "org.hibernate", name: "hibernate-entitymanager",  version: hibernateVersion
+
+        implementation group: "org.hibernate", name: "hibernate-validator",      version: hibernateValidatorVersion
+        implementation group: "net.bytebuddy", name: "byte-buddy-dep",           version: '1.10.13'
+        implementation group: "org.ow2.asm", name: "asm",           version: '7.3.1'
+
+        implementation group: "org.hibernate.common", name: "hibernate-commons-annotations", version: "5.1.0.Final"
+
+        implementation group: "org.hibernate.javax.persistence", name: "hibernate-jpa-2.1-api", version: '1.0.2.Final'
+        implementation group: "javax.persistence", name: "javax.persistence-api", version: '2.2'
+
+        implementation group: "org.jboss", name: "jandex", version: '1.1.0.Final'
+        implementation group: "org.jboss.logging", name: "jboss-logging", version: '3.3.1.Final'
+        implementation group: "org.jboss.spec.javax.transaction", name: "jboss-transaction-api_1.2_spec", version: '1.0.0.Final'
+
+        implementation group: "org.javassist", name: "javassist", version: '3.18.1-GA'
+        implementation group: "dom4j", name: "dom4j", version: '1.6.1'
+        implementation group: "antlr", name: "antlr", version: '2.7.7'
+
+        implementation group: "com.h2database", name: "h2", version: '1.4.200'
+        implementation group: "org.hsqldb", name: "hsqldb", version: '2.3.4'
+        implementation group: 'org.postgresql', name: 'postgresql', version: '42.2.5'
+        implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '9.2.0.jre11'
+
+        implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.5'
+
+        /*************************core/misc template, pdf deploy jars***************************/
+
+        implementation group: 'com.github.jknack', name: 'handlebars', version: '4.2.0'
+
+        implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-core',  version: '9.1.22'
+        implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-pdf',   version: '9.1.22'
+
+        implementation group: 'com.lowagie',  name: 'itext',  version: '2.1.7'
+        implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
+
+        implementation group: 'org.yaml', name: 'snakeyaml', version: '1.28'
+
+        implementation group: 'org.apache.poi', name: 'poi', version: '5.0.0'
+        implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.0.0'
+        implementation group: 'org.apache.poi', name: 'poi-ooxml-lite', version: '5.0.0'
+        implementation group: 'org.apache.xmlbeans', name: 'xmlbeans', version: '4.0.0'
+        implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+        implementation group: 'org.apache.commons', name: 'commons-compress', version: '1.20'
+
+        //cache
+        implementation group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
+        implementation group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+        implementation group: 'org.ehcache', name: 'ehcache', version: '3.9.4'
+        implementation group: 'org.glassfish.jaxb', name: 'jaxb-runtime', version: '2.3.1'
+        implementation group: 'com.sun.istack', name: 'istack-commons-runtime', version: '4.0.1'
+
+        implementation group: 'org.flywaydb', name: 'flyway-core', version: '7.10.0'
+
+        /*************************jetty web server runtime deploy jars***************************/
+        implementation group: "org.eclipse.jetty", name: "jetty-servlet", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-servlets", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-continuation", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-http", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-util", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-io", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-server", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-webapp", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-security", version: jettyVersion
+        implementation group: "org.eclipse.jetty", name: "jetty-client", version: jettyVersion
+
+        implementation group: "org.eclipse.jetty.websocket", name: "websocket-common", version: jettyVersion
+        implementation group: "org.eclipse.jetty.websocket", name: "websocket-api", version: jettyVersion
+        implementation group: "org.eclipse.jetty.websocket", name: "websocket-servlet", version: jettyVersion
+        implementation group: "org.eclipse.jetty.websocket", name: "websocket-client", version: jettyVersion
+        implementation group: "org.eclipse.jetty.websocket", name: "websocket-server", version: jettyVersion
+
+        implementation group: "javax.servlet",     name: "javax.servlet-api", version: "3.1.0"
+
+        implementation group: "org.springframework", name: "spring-web", version: springFrameworkVersion
+        implementation group: "org.springframework", name: "spring-webmvc", version: springFrameworkVersion
+
+        /*************************server runtime deploy jars***************************/
+
+        implementation group: 'commons-cli', name: 'commons-cli', version: '1.2'
+
+        implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.7'
+
+        implementation group: 'io.swagger', name: 'swagger-models', version: '1.5.20'
+        implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.20'
+        implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.9'
+        implementation group: 'io.swagger.core.v3', name: 'swagger-models', version: '2.1.9'
+
+        implementation group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+        implementation group: 'io.springfox', name: 'springfox-core', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-oas', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-spi', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-schema', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-swagger-common', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-spring-web', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-spring-webmvc', version: springfoxVersion
+        implementation group: 'io.springfox', name: 'springfox-spring-webflux', version: springfoxVersion
+
+
+        implementation group: 'org.springframework.plugin', name: 'spring-plugin-core', version: '2.0.0.RELEASE'
+        implementation group: 'org.springframework.plugin', name: 'spring-plugin-metadata', version: '2.0.0.RELEASE'
+
+        implementation group: 'com.google.guava',  name: 'guava', version: '30.1.1-jre'
+        implementation group: 'com.google.guava', name: 'failureaccess', version: '1.0.1'
+
+
+        implementation group: 'junit', name: 'junit', version: '4.12'
+        implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.7.2'
+        implementation group: 'org.junit.platform', name: 'junit-platform-commons', version: '1.7.2'
+
+        implementation group: 'org.opentest4j', name: 'opentest4j', version: '1.2.0'
+
+        implementation group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
+
+        implementation group: 'org.reactivestreams', name: 'reactive-streams', version: '1.0.3'
+        implementation group: 'io.projectreactor', name: 'reactor-core', version: '3.4.6'
+        
+        implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+        implementation "org.slf4j:slf4j-ext:${slf4jVersion}"
+
+        implementation 'org.projectlombok:lombok:1.18.16'
+        annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+        implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+        implementation group: 'junit', name: 'junit', version: '4.12'
+
+        testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
+        implementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
+    }
+
+    test {
+        forkEvery = 1
+        ignoreFailures = true
+        testLogging.showStandardStreams = true
+
+        filter {
+            includeTestsMatching "*UnitTest"
+        }
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
+
+    task itest(type: Test) {
+        description = 'Runs integration tests.'
+
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        useJUnitPlatform {
+            includeTags('integration')
+        }
+
+    }
+
+    task utest(type: Test) {
+        ignoreFailures = true
+        description = 'Runs Unit tests.'
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        useJUnitPlatform {
+            includeTags('unit')
+        }
+
+    }
+
+    task tofix(type: Test) {
+        description = 'Runs tofix tests.'
+
+        testLogging.showStandardStreams = true
+
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+
+        useJUnitPlatform {
+            includeTags('tofix')
+        }
+
+    }
+
+    task testJar(type: Jar) {
+        classifier = 'tests'
+        from sourceSets.test.output
+    }
+
+    configurations {
+        tests
+        published.extendsFrom tests, archives
+    }
+
+    artifacts {
+        tests testJar
+    }
+
+    sourceSets {
+        main {
+        }
+    }
 }
