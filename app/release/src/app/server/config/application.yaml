@@ -24,7 +24,7 @@ server:
 
 spring:
   main:
-    banner-mode: off
+    banner-mode: console
     allow-bean-definition-overriding: false
   output:
     ansi:
