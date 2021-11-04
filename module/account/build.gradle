@@ -1,0 +1,19 @@
+archivesBaseName = "devteam-module-account"
+
+eclipse {
+  project {
+    name = 'devteam-module-account'
+  }
+}
+
+dependencies {
+  api project(':devteam-module-common')
+  api project(':devteam-core')
+  api project(':devteam-module-settings')
+  api project(':devteam-module-storage')
+}
+
+test {
+  testLogging.showStandardStreams = false
+  useJUnitPlatform()
+}

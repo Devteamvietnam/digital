@@ -1,0 +1,24 @@
+archivesBaseName = "devteam-tutorial"
+
+eclipse {
+  project {
+    name = 'devteam-tutorial'
+  }
+}
+
+dependencies {
+  api project(':devteam-lib')
+  api group: 'org.hsqldb',     name: 'hsqldb', version: '2.3.4'
+
+//  testCompile ('org.junit.jupiter:junit-jupiter:5.6.0')
+  testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
+  implementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.2'
+}
+
+test {
+  useJUnitPlatform()
+
+  filter {
+    includeTestsMatching "*UnitTest"
+  }
+}

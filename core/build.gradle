@@ -1,0 +1,56 @@
+archivesBaseName = "devteam-core"
+
+eclipse {
+  project {
+    name = 'devteam-core'
+  }
+}
+
+dependencies {
+  api project(':devteam-lib')
+  api project(':devteam-module-common')
+  api project(':devteam-module-springframework')
+
+  api "org.springframework.boot:spring-boot-starter-validation:${springBootVersion}"
+  api "org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"
+  api "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
+
+  api group: 'javax.validation', name: 'validation-api', version: '1.1.0.Final'
+  api group: "javax.persistence", name: "javax.persistence-api", version: '2.2'
+  api group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.1-api',   version: '1.0.0.Final'
+
+  api group: "org.hibernate", name: "hibernate-core",           version: hibernateVersion
+  api group: "org.hibernate", name: "hibernate-entitymanager",  version: hibernateVersion
+
+  api group: "org.hibernate", name: "hibernate-validator",      version: hibernateValidatorVersion
+
+  api group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+
+  api group: 'javax.cache', name: 'cache-api', version: '1.1.1'
+  api group: 'org.ehcache', name: 'ehcache', version: '3.9.4'
+  api group: 'com.github.ben-manes.caffeine', name: 'caffeine', version: '3.0.3'
+  
+  implementation group: 'com.github.spullara.mustache.java',  name: 'compiler',  version: '0.9.10'
+  implementation group: 'com.github.jknack', name: 'handlebars', version: '4.2.0'
+
+
+  implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-core',  version: '9.1.22'
+  implementation group: 'org.xhtmlrenderer', name: 'flying-saucer-pdf',   version: '9.1.22'
+
+  //Those libs are used to convert pdf to image
+  implementation group: 'org.apache.pdfbox',  name: 'pdfbox',  version: '2.0.21'
+  implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.2'
+
+  implementation group: 'com.flipkart.zjsonpatch', name: 'zjsonpatch', version: '0.4.6'
+
+  implementation 'org.hsqldb:hsqldb:2.3.4'
+  runtimeOnly 'org.postgresql:postgresql:42.2.5'
+  runtimeOnly 'com.zaxxer:HikariCP:3.4.5'
+}
+
+test {
+  useJUnitPlatform()
+  filter {
+    includeTestsMatching "*RepositoryUnitTest"
+  }
+}

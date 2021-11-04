@@ -1,0 +1,24 @@
+archivesBaseName = "devteam-app-core"
+
+eclipse {
+  project {
+    name = 'devteam-app-core'
+  }
+}
+
+dependencies {
+  api project(':devteam-core')
+  api project(':devteam-module-account')
+  api project(':devteam-module-settings')
+
+
+  api group: "org.springframework", name: "spring-messaging", version: springFrameworkVersion
+  api group: "org.springframework", name: "spring-websocket", version: springFrameworkVersion
+
+  api group: "org.springdoc", name: "springdoc-openapi-ui", version: '1.5.2'
+  api group: 'io.springfox', name: 'springfox-oas', version: springfoxVersion
+
+  api group: 'io.springfox', name: 'springfox-oas', version: springfoxVersion
+
+  api group: 'org.flywaydb', name: 'flyway-core', version: '7.10.0'
+}
