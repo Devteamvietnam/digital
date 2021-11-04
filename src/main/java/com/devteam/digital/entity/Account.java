@@ -33,7 +33,7 @@ public class Account<AccountPreferenceEntity> {
     @JoinTable(	name = "account_role",
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "account_id"))
-    private Set<AccountRole> userRoles = new HashSet<AccountRole>();
+    private Set<AccountRole> accountRoles = new HashSet<AccountRole>();
 
     @EqualsAndHashCode.Exclude
     @OneToOne(mappedBy = "account",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
