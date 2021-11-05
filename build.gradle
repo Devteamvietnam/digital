@@ -55,7 +55,7 @@ subprojects {
 
   group = 'com.devteam'
   version = '1.0'
-  sourceCompatibility = 8
+  sourceCompatibility = 11
   compileJava.options.encoding = 'UTF-8'
 
   configurations {
